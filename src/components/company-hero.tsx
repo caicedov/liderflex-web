@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Award, Users, Wrench } from "lucide-react";
+import Link from "next/link";
 
 export default function CompanyHero() {
   return (
@@ -37,23 +38,19 @@ export default function CompanyHero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <Button
-                className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-8 py-4 text-lg"
-                onClick={() => {
-                  window.location.href = "/shop";
-                }}
-              >
-                Explorar Productos <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-obsidian-900 px-8 py-4 text-lg bg-transparent"
-                onClick={() => {
-                  window.location.href = "/contact";
-                }}
-              >
-                Solicitar Cotización
-              </Button>
+              <Link href="/shop">
+                <Button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-8 py-4 text-lg">
+                  Explorar Productos <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-obsidian-900 px-8 py-4 text-lg bg-transparent"
+                >
+                  Solicitar Cotización
+                </Button>
+              </Link>
             </div>
 
             <div className="grid grid-cols-3 gap-8">

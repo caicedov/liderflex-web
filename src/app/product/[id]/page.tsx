@@ -16,7 +16,7 @@ import {
   Shield,
   RotateCcw,
 } from "lucide-react";
-import { CartProvider, useCart } from "@/components/cart-context";
+import { useCart } from "@/components/cart-context";
 import Image from "next/image";
 
 const productData = {
@@ -373,7 +373,7 @@ function ProductDetailContent({ params }: { params: { id: string } }) {
                 <div className="grid grid-cols-3 gap-2">
                   {product.availableSizes.map((sizeOption) => (
                     <button
-                    type="button"
+                      type="button"
                       key={sizeOption.size}
                       onClick={() => setSelectedSize(sizeOption.size)}
                       className={`p-3 border rounded-lg text-center ${
@@ -495,7 +495,7 @@ function ProductDetailContent({ params }: { params: { id: string } }) {
               <ul className="list-disc pl-6 space-y-2">
                 {product.features.map((feature, index) => (
                   // biome-ignore lint/suspicious/noArrayIndexKey: <TODO: Change it later>
-<li key={index} className="text-gray-600">
+                  <li key={index} className="text-gray-600">
                     {feature}
                   </li>
                 ))}
@@ -659,9 +659,5 @@ export default function ProductDetailPage({
 }: {
   params: { id: string };
 }) {
-  return (
-    <CartProvider>
-      <ProductDetailContent params={params} />
-    </CartProvider>
-  );
+  return <ProductDetailContent params={params} />;
 }

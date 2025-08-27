@@ -23,6 +23,10 @@ type CartAction =
   | { type: "UPDATE_QUANTITY"; payload: { id: string; quantity: number } }
   | { type: "CLEAR_CART" };
 
+const calculateTotal = (items: CartItem[]): number => {
+  return items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+};
+
 const CartContext = createContext<{
   state: CartState;
   dispatch: React.Dispatch<CartAction>;
@@ -42,19 +46,13 @@ function cartReducer(state: CartState, action: CartAction): CartState {
         );
         return {
           items: updatedItems,
-          total: updatedItems.reduce(
-            (sum, item) => sum + item.price * item.quantity,
-            0,
-          ),
+          total: calculateTotal(updatedItems),
         };
       } else {
         const newItems = [...state.items, { ...action.payload, quantity: 1 }];
         return {
           items: newItems,
-          total: newItems.reduce(
-            (sum, item) => sum + item.price * item.quantity,
-            0,
-          ),
+          total: calculateTotal(newItems),
         };
       }
     }
@@ -62,10 +60,7 @@ function cartReducer(state: CartState, action: CartAction): CartState {
       const newItems = state.items.filter((item) => item.id !== action.payload);
       return {
         items: newItems,
-        total: newItems.reduce(
-          (sum, item) => sum + item.price * item.quantity,
-          0,
-        ),
+        total: calculateTotal(newItems),
       };
     }
     case "UPDATE_QUANTITY": {
@@ -78,10 +73,7 @@ function cartReducer(state: CartState, action: CartAction): CartState {
         .filter((item) => item.quantity > 0);
       return {
         items: updatedItems,
-        total: updatedItems.reduce(
-          (sum, item) => sum + item.price * item.quantity,
-          0,
-        ),
+        total: calculateTotal(updatedItems),
       };
     }
     case "CLEAR_CART":

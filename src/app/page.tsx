@@ -7,21 +7,18 @@ import FeaturedProducts from "@/components/featured-products";
 import WhyChooseUs from "@/components/why-choose-us";
 import Newsletter from "@/components/newsletter";
 import Footer from "@/components/footer";
-import { CartProvider } from "@/components/cart-context";
 
 export default function HomePage() {
   return (
-    <CartProvider>
-      <div className="min-h-screen bg-white">
-        <Header />
-        <CompanyHero />
-        <AboutSection />
-        <ServicesSection />
-        <FeaturedProducts />
-        <WhyChooseUs />
-        <Newsletter />
-        <Footer />
-      </div>
-    </CartProvider>
+    <div className="min-h-screen bg-white">
+      <Header />
+      <CompanyHero />
+      <AboutSection />
+      <ServicesSection />
+      <FeaturedProducts />
+      <WhyChooseUs />
+      <Newsletter />
+      <Footer />
+    </div>
   );
 }

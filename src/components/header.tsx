@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Search, ShoppingCart, Menu, Phone, User, Heart } from "lucide-react";
 import { useCart } from "@/components/cart-context";
 import CartSheet from "@/components/cart-sheet";
+import Link from "next/link";
 
 export default function Header() {
   const { state } = useCart();
@@ -29,18 +30,18 @@ export default function Header() {
             </Button>
           </div>
           <div className="flex items-center gap-6">
-            <a href="/about" className="hover:text-yellow-400">
+            <Link href="/about" className="hover:text-yellow-400">
               Nosotros
-            </a>
-            <a href="/blog" className="hover:text-yellow-400">
+            </Link>
+            <Link href="/blog" className="hover:text-yellow-400">
               Blog
-            </a>
-            <a href="/contact" className="hover:text-yellow-400">
+            </Link>
+            <Link href="/contact" className="hover:text-yellow-400">
               Contacto
-            </a>
-            <a href="#" className="hover:text-yellow-400">
+            </Link>
+            <Link href="/faq" className="hover:text-yellow-400">
               FAQ
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -63,8 +64,11 @@ export default function Header() {
 
             {/* Search Bar */}
             <div className="flex-1 max-w-2xl mx-8">
-              <div className="flex">
-                <select className="bg-white text-black px-4 py-2 rounded-l-md border-r">
+              <search className="flex">
+                <select
+                  className="bg-white text-black px-4 py-2 rounded-l-md border-r"
+                  aria-label="Categoría de búsqueda"
+                >
                   <option>Todas las Categorías</option>
                   <option>Mangueras Hidráulicas</option>
                   <option>Mangueras Industriales</option>
@@ -74,12 +78,17 @@ export default function Header() {
                 <Input
                   placeholder="Buscar mangueras hidráulicas..."
                   className="flex-1 rounded-none border-0 focus:ring-yellow-400 focus:border-yellow-400"
+                  aria-label="Buscar productos"
                 />
-                <Button className="bg-yellow-400 hover:bg-yellow-500 text-black rounded-r-md px-6">
+                <Button
+                  type="submit"
+                  className="bg-yellow-400 hover:bg-yellow-500 text-black rounded-r-md px-6"
+                  aria-label="Buscar"
+                >
                   <Search className="w-4 h-4" />
                   BUSCAR
                 </Button>
-              </div>
+              </search>
             </div>
 
             {/* Right Side */}
@@ -95,6 +104,7 @@ export default function Header() {
                 variant="ghost"
                 size="icon"
                 className="text-white hover:text-yellow-400"
+                aria-label="Cuenta de usuario"
               >
                 <User className="w-5 h-5" />
               </Button>
@@ -102,6 +112,7 @@ export default function Header() {
                 variant="ghost"
                 size="icon"
                 className="text-white hover:text-yellow-400 relative"
+                aria-label="Lista de deseos"
               >
                 <Heart className="w-5 h-5" />
                 <Badge className="absolute -top-2 -right-2 bg-yellow-400 text-black">
@@ -113,6 +124,7 @@ export default function Header() {
                 size="icon"
                 className="text-white hover:text-yellow-400 relative"
                 onClick={() => setIsCartOpen(true)}
+                aria-label={`Carrito de compras, ${state.items.reduce((sum, item) => sum + item.quantity, 0)} productos`}
               >
                 <ShoppingCart className="w-5 h-5" />
                 <Badge className="absolute -top-2 -right-2 bg-yellow-400 text-black">
@@ -125,7 +137,10 @@ export default function Header() {
       </header>
 
       {/* Navigation */}
-      <nav className="bg-yellow-400 text-black py-3">
+      <nav
+        className="bg-yellow-400 text-black py-3"
+        aria-label="Navegación principal"
+      >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
             <Button className="bg-white text-black hover:bg-gray-100">
@@ -134,43 +149,61 @@ export default function Header() {
             </Button>
 
             <div className="flex items-center gap-8">
-              <a href="/" className="font-medium hover:text-obsidian-900">
+              <Link href="/" className="font-medium hover:text-obsidian-900">
                 Inicio
-              </a>
+              </Link>
               <div className="relative group">
-                <a href="/shop" className="font-medium hover:text-obsidian-900">
+                <Link
+                  href="/shop"
+                  className="font-medium hover:text-obsidian-900"
+                >
                   Tienda
-                </a>
+                </Link>
               </div>
               <div className="relative group">
-                <a href="#" className="font-medium hover:text-obsidian-900">
+                <Link
+                  href="/categories"
+                  className="font-medium hover:text-obsidian-900"
+                >
                   Categorías{" "}
                   <Badge className="bg-obsidian-600 text-white ml-1">
                     OFERTA
                   </Badge>
-                </a>
+                </Link>
               </div>
               <div className="relative group">
-                <a href="#" className="font-medium hover:text-obsidian-900">
+                <Link
+                  href="/products"
+                  className="font-medium hover:text-obsidian-900"
+                >
                   Productos{" "}
                   <Badge className="bg-red-600 text-white ml-1">NUEVO</Badge>
-                </a>
+                </Link>
               </div>
-              <a href="#" className="font-medium hover:text-obsidian-900">
+              <Link
+                href="/deals"
+                className="font-medium hover:text-obsidian-900"
+              >
                 Ofertas del Día
-              </a>
-              <a href="/about" className="font-medium hover:text-obsidian-900">
+              </Link>
+              <Link
+                href="/about"
+                className="font-medium hover:text-obsidian-900"
+              >
                 Nosotros
-              </a>
-              <a href="/blog" className="font-medium hover:text-obsidian-900">
+              </Link>
+              <Link
+                href="/blog"
+                className="font-medium hover:text-obsidian-900"
+              >
                 Blog
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/contact"
                 className="font-medium hover:text-obsidian-900"
               >
                 Contacto
-              </a>
+              </Link>
             </div>
 
             <Button
