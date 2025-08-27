@@ -85,7 +85,7 @@ export default function QuickBuyModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-md mx-auto">
+      <DialogContent className="max-w-md mx-auto bg-white shadow-2xl rounded-xl">
         <DialogHeader>
           <DialogTitle className="flex items-center justify-between">
             <span>Compra Rápida</span>
@@ -153,7 +153,9 @@ export default function QuickBuyModal({
 
           {/* Quantity Selector */}
           <div className="space-y-3">
-            <label htmlFor="quick-buy-quantity" className="text-sm font-medium">Cantidad:</label>
+            <label htmlFor="quick-buy-quantity" className="text-sm font-medium">
+              Cantidad:
+            </label>
             <div className="flex items-center gap-3">
               <div className="flex items-center border rounded-lg">
                 <Button

@@ -29,7 +29,7 @@ export default function CartSheet({ isOpen, onClose }: CartSheetProps) {
 
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
-      <SheetContent className="w-[400px] sm:w-[540px]">
+      <SheetContent className="w-[400px] sm:w-[540px] bg-white shadow-2xl rounded-l-xl">
         <SheetHeader>
           <SheetTitle>Carrito de Compras ({state.items.length})</SheetTitle>
         </SheetHeader>

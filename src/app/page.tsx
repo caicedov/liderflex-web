@@ -21,7 +21,6 @@ export default function HomePage() {
         src="/globe.mp4"
       />
       <div className="relative z-10">
-        <Header />
         <CompanyHero />
         <div className="animate-fade-in-up duration-1000">
           <AboutSection />

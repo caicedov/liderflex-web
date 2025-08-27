@@ -61,7 +61,6 @@ export default function ContactPage() {
   return (
     <CartProvider>
       <div className="min-h-screen bg-white">
-        <Header />
 
         {/* Hero Section */}
         <section className="bg-gradient-to-r from-obsidian-900 to-obsidian-700 text-white py-16">

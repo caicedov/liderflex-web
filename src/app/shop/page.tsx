@@ -19,7 +19,6 @@ export default function ShopPage() {
         src="/globe.mp4"
       />
       <div className="relative z-10">
-        <Header />
         <div className="py-8 animate-fade-in-up duration-1000">
           <div className="container mx-auto px-4">
             <h1 className="text-4xl font-bold text-center mb-8">
