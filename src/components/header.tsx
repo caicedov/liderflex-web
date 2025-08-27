@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Search, ShoppingCart, Menu, Phone, User, Heart } from "lucide-react";
 import { useCart } from "@/components/cart-context";
+
+import Image from "next/image";
 import CartSheet from "@/components/cart-sheet";
 import Link from "next/link";
 
@@ -51,15 +53,15 @@ export default function Header() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <div className="flex items-center">
-              <div className="bg-yellow-400 text-black p-2 rounded-lg mr-3">
-                <div className="w-8 h-8 flex items-center justify-center font-bold text-xl">
-                  L
-                </div>
-              </div>
-              <h1 className="text-2xl font-bold text-yellow-400">
-                Liderflex Hidráulica
-              </h1>
+            <div className="">
+              <Image
+                src="/logo-white.png"
+                alt="Liderflex Hidráulica Logo"
+                className=" mr-3 drop-shadow-lg"
+                width={140}
+                height={24}
+                priority
+              />
             </div>
 
             {/* Search Bar */}
@@ -160,7 +162,8 @@ export default function Header() {
                   Tienda
                 </Link>
               </div>
-              <div className="relative group">
+              {/** 
+                 * <div className="relative group">
                 <Link
                   href="/categories"
                   className="font-medium hover:text-obsidian-900"
@@ -186,6 +189,8 @@ export default function Header() {
               >
                 Ofertas del Día
               </Link>
+                */}
+
               <Link
                 href="/about"
                 className="font-medium hover:text-obsidian-900"

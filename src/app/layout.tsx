@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import Header from "@/components/header";
+import WhatsAppChatModal from "@/components/whatsapp-chat-modal";
 import { CartProvider } from "@/components/cart-context";
 
 const geistSans = Geist({
@@ -40,6 +41,8 @@ export default function RootLayout({
             <Header />
           </div>
           {children}
+          {/* WhatsApp Chat Modal floating button */}
+          <WhatsAppChatModal />
         </CartProvider>
       </body>
     </html>

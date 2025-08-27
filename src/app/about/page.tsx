@@ -14,7 +14,7 @@ export default function AboutPage() {
         {/* Hero Section */}
         <section className="relative bg-gradient-to-r from-obsidian-900 to-obsidian-700 text-white py-16 overflow-hidden">
           <video
-            src="/placeholder.mp4"
+            src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
             autoPlay
             loop
             muted
@@ -63,7 +63,7 @@ export default function AboutPage() {
               </div>
               <div className="relative group animate-fade-in-up">
                 <video
-                  src="/placeholder.mp4"
+                  src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
                   autoPlay
                   loop
                   muted

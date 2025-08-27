@@ -18,7 +18,7 @@ export default function HomePage() {
         muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover opacity-30 z-0 animate-fade-in"
-        src="/globe.mp4"
+        src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
       />
       <div className="relative z-10">
         <CompanyHero />

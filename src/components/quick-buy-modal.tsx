@@ -237,7 +237,7 @@ export default function QuickBuyModal({
                 product.stockQuantity ? quantity > product.stockQuantity : false
               }
             >
-              Comprar Ahora
+              Cotizar Ahora
             </Button>
           </div>
 
