@@ -23,7 +23,7 @@ export default function CompanyHero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="text-white">
             <div className="inline-block bg-yellow-400 text-black px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              🏆 25+ Años de Excelencia
+              🏆 X+ Años de Excelencia
             </div>
 
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
@@ -64,7 +64,7 @@ export default function CompanyHero() {
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-yellow-400 mb-1">
-                  25+
+                  X+
                 </div>
                 <div className="text-sm text-gray-300">Años de Experiencia</div>
               </div>

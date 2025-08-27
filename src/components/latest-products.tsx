@@ -4,81 +4,7 @@ import ProductCard from "@/components/product-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-
-const latestProducts = [
-  {
-    id: "7",
-    name: "Herramienta de Engaste Hidráulico Profesional",
-    price: 159,
-    rating: 5,
-    image: "/placeholder.svg?height=200&width=200",
-    category: "Herramientas",
-    description:
-      "Herramienta profesional para engaste de mangueras hidráulicas.",
-    stockQuantity: 12,
-  },
-  {
-    id: "8",
-    name: "Rollo de Manguera Hidráulica Flexible 100ft",
-    price: 539,
-    rating: 4,
-    image: "/placeholder.svg?height=200&width=200",
-    category: "Mangueras Hidráulicas",
-    description: "Rollo completo de manguera hidráulica flexible de 100 pies.",
-    stockQuantity: 8,
-  },
-  {
-    id: "9",
-    name: "Manguera Trenzada de Acero de Alta Presión",
-    price: 110,
-    originalPrice: 115,
-    rating: 4,
-    discount: 4,
-    image: "/placeholder.svg?height=200&width=200",
-    category: "Mangueras Hidráulicas",
-    description:
-      "Manguera trenzada de acero para aplicaciones de alta presión.",
-    stockQuantity: 25,
-    countdown: { days: 425, hours: 20, minutes: 36, seconds: 25 },
-  },
-  {
-    id: "10",
-    name: "Kit de Manguera Neumática Industrial",
-    price: 320,
-    originalPrice: 269,
-    rating: 4,
-    discount: 7,
-    image: "/placeholder.svg?height=200&width=200",
-    category: "Kits Completos",
-    description: "Kit completo de mangueras neumáticas para uso industrial.",
-    stockQuantity: 14,
-  },
-  {
-    id: "11",
-    name: "Juego de Adaptadores Hidráulicos Resistentes",
-    price: 228,
-    originalPrice: 219,
-    rating: 4,
-    image: "/placeholder.svg?height=200&width=200",
-    category: "Adaptadores",
-    description: "Juego completo de adaptadores hidráulicos resistentes.",
-    stockQuantity: 30,
-  },
-  {
-    id: "12",
-    name: "Manguera Hidráulica de Goma Premium",
-    price: 175,
-    originalPrice: 180,
-    rating: 5,
-    discount: 3,
-    image: "/placeholder.svg?height=200&width=200",
-    category: "Mangueras Hidráulicas",
-    description:
-      "Manguera hidráulica de goma premium para aplicaciones exigentes.",
-    stockQuantity: 40,
-    countdown: { days: 329, hours: 20, minutes: 36, seconds: 25 },
-  },
-];
+import { products } from "@/components/product-data";
 
 export default function LatestProducts() {
   return (
@@ -93,13 +19,15 @@ export default function LatestProducts() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 mb-12">
-          {latestProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              showCountdown={true}
-            />
-          ))}
+          {products
+            .filter((p) => Number(p.id) >= 7 && Number(p.id) <= 12)
+            .map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                showCountdown={true}
+              />
+            ))}
         </div>
 
         {/* Exclusive Offer Banner */}

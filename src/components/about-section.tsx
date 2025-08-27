@@ -17,11 +17,11 @@ export default function AboutSection() {
 
             <h2 className="text-4xl font-bold mb-6">
               Liderando la Industria Hidráulica por más de
-              <span className="text-yellow-400"> 25 Años</span>
+              <span className="text-yellow-400"> X Años</span>
             </h2>
 
             <p className="text-gray-600 text-lg mb-6 leading-relaxed">
-              Desde 1998, Liderflex Hidráulica ha estado a la vanguardia de las soluciones de mangueras hidráulicas e
+              Desde XXXX, Liderflex Hidráulica ha estado a la vanguardia de las soluciones de mangueras hidráulicas e
               industriales. Hemos construido nuestra reputación entregando productos de calidad excepcional y un
               servicio al cliente inigualable a industrias en todo Chile y Sudamérica.
             </p>

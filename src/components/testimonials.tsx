@@ -26,7 +26,7 @@ const testimonials = [
     avatar: "/placeholder.svg?height=60&width=60",
   },
   {
-    name: "Ana Gutiérrez",
+    name: "Johanna Maldonado",
     role: "Gerente de Compras",
     content:
       "Calidad impresionante y precios competitivos. Liderflex entrega exactamente lo que necesitamos para nuestras operaciones.",

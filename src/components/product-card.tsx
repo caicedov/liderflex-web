@@ -9,25 +9,9 @@ import { useCart } from "@/components/cart-context";
 import QuickBuyModal from "@/components/quick-buy-modal";
 import Image from "next/image";
 
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  originalPrice?: number;
-  rating: number;
-  discount?: number;
-  image: string;
-  category?: string;
-  description?: string;
-  inStock?: boolean;
-  stockQuantity?: number;
-  countdown?: {
-    days: number;
-    hours: number;
-    minutes: number;
-    seconds: number;
-  };
-}
+import type { Product as ProductType } from "@/components/product-data";
+
+type Product = ProductType;
 
 interface ProductCardProps {
   product: Product;
@@ -88,11 +72,16 @@ export default function ProductCard({
                 }
               >
                 <Image
-                  src={product.image || "/placeholder.svg"}
+                  src={
+                    product.image ||
+                    (product.images && product.images[0]) ||
+                    "/placeholder.svg"
+                  }
                   alt={product.name}
                   width={200}
                   height={200}
                   className="w-full h-40 object-cover rounded-md transition-transform group-hover:scale-105"
+                  loading="lazy"
                 />
               </div>
             </div>

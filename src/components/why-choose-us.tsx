@@ -16,7 +16,7 @@ const reasons = [
     icon: Users,
     title: "Equipo Experto",
     description: "Ingenieros hidráulicos con décadas de experiencia combinada",
-    stat: "25+",
+    stat: "X+",
     statLabel: "Años de Experiencia",
   },
   {
@@ -29,17 +29,17 @@ const reasons = [
   },
   {
     icon: Globe,
-    title: "Amplia Cobertura",
-    description: "Atendiendo clientes en Chile y toda Sudamérica",
-    stat: "15",
-    statLabel: "Países Atendidos",
+    title: "Amplio Stock",
+    description: "Atendiendo clientes en la Región de Antofagasta",
+    stat: "1",
+    statLabel: "Regiones Atendidas",
   },
   {
     icon: Shield,
     title: "Protección de Garantía",
     description: "Cobertura de garantía integral en todos nuestros productos",
-    stat: "2-5",
-    statLabel: "Años de Garantía",
+    stat: "X-X",
+    statLabel: "Meses de Garantía",
   },
   {
     icon: Clock,

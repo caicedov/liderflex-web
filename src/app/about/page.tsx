@@ -21,7 +21,7 @@ export default function AboutPage() {
               </h1>
               <p className="text-xl max-w-3xl mx-auto">
                 Proveedor líder de soluciones premium de mangueras hidráulicas e
-                industriales con más de 25 años de experiencia
+                industriales con más de X años de experiencia
               </p>
             </div>
           </div>
@@ -34,10 +34,10 @@ export default function AboutPage() {
               <div>
                 <h2 className="text-3xl font-bold mb-6">Nuestra Historia</h2>
                 <p className="text-gray-600 mb-4">
-                  Fundada en 1998, Liderflex Hidráulica comenzó como un pequeño
-                  negocio familiar con la visión de proporcionar las soluciones
+                  Fundada en XXXX, Liderflex Hidráulica comenzó como un pequeño
+                  negocio con la visión de proporcionar las soluciones
                   de mangueras hidráulicas de más alta calidad a clientes
-                  industriales en Chile y toda Sudamérica.
+                  industriales en Antofagasta y toda Chile.
                 </p>
                 <p className="text-gray-600 mb-4">
                   A lo largo de los años, hemos crecido para convertirnos en un
@@ -96,7 +96,7 @@ export default function AboutPage() {
                   <h3 className="text-2xl font-bold mb-4">Nuestra Visión</h3>
                   <p className="text-gray-600">
                     Ser el proveedor líder de soluciones hidráulicas en
-                    Sudamérica, reconocido por nuestra innovación, calidad y
+                    Chile, reconocido por nuestra innovación, calidad y
                     enfoque centrado en el cliente. Visualizamos un futuro donde
                     nuestros productos y servicios permitan a las industrias
                     operar de manera más eficiente, segura y sostenible mientras
@@ -187,12 +187,12 @@ export default function AboutPage() {
                     height={150}
                     className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
                   />
-                  <h3 className="text-xl font-bold mb-2">Roberto Martínez</h3>
+                  <h3 className="text-xl font-bold mb-2">Fernando Montaño</h3>
                   <p className="text-yellow-600 font-semibold mb-3">
                     CEO y Fundador
                   </p>
                   <p className="text-gray-600 text-sm">
-                    Con más de 30 años en la industria hidráulica, Roberto fundó
+                    Con más de X años en la industria hidráulica, Fernando fundó
                     Liderflex con la visión de proporcionar soluciones
                     hidráulicas excepcionales.
                   </p>
@@ -208,12 +208,12 @@ export default function AboutPage() {
                     height={150}
                     className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
                   />
-                  <h3 className="text-xl font-bold mb-2">Ana Gutiérrez</h3>
+                  <h3 className="text-xl font-bold mb-2">Johanna Maldonado</h3>
                   <p className="text-yellow-600 font-semibold mb-3">
                     Directora Técnica
                   </p>
                   <p className="text-gray-600 text-sm">
-                    Ana lidera nuestro equipo técnico con 25 años de experiencia
+                    Johanna lidera nuestro equipo técnico con X años de experiencia
                     en ingeniería de sistemas hidráulicos y aplicaciones
                     industriales.
                   </p>
@@ -249,13 +249,13 @@ export default function AboutPage() {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div>
-                <div className="text-4xl font-bold text-black mb-2">25+</div>
+                <div className="text-4xl font-bold text-black mb-2">X+</div>
                 <div className="text-black font-semibold">
                   Años de Experiencia
                 </div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-black mb-2">5000+</div>
+                <div className="text-4xl font-bold text-black mb-2">50+</div>
                 <div className="text-black font-semibold">
                   Clientes Satisfechos
                 </div>
@@ -267,8 +267,8 @@ export default function AboutPage() {
                 </div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-black mb-2">15</div>
-                <div className="text-black font-semibold">Países Atendidos</div>
+                <div className="text-4xl font-bold text-black mb-2">1</div>
+                <div className="text-black font-semibold">Regiones Atendidas</div>
               </div>
             </div>
           </div>
