@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
+import Header from "@/components/header";
 import { CartProvider } from "@/components/cart-context";
 
 const geistSans = Geist({
@@ -32,7 +34,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <CartProvider>{children}</CartProvider>
+        <CartProvider>
+          {/* Sticky Header (Topbar + Nav) for all pages */}
+          <div className="sticky top-0 z-50 shadow-lg">
+            <Header />
+          </div>
+          {children}
+        </CartProvider>
       </body>
     </html>
   );

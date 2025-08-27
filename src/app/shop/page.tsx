@@ -8,23 +8,43 @@ import Footer from "@/components/footer";
 
 export default function ShopPage() {
   return (
-    <div className="min-h-screen bg-white">
-      <Header />
-      <div className="py-8">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold text-center mb-8">
-            Nuestros Productos
-          </h1>
-          <p className="text-gray-600 text-center mb-12">
-            Descubre nuestra amplia gama de mangueras hidráulicas e industriales
-          </p>
+    <div className="relative min-h-screen bg-white overflow-hidden">
+      {/* Video Background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover opacity-30 z-0 animate-fade-in"
+        src="/globe.mp4"
+      />
+      <div className="relative z-10">
+        <Header />
+        <div className="py-8 animate-fade-in-up duration-1000">
+          <div className="container mx-auto px-4">
+            <h1 className="text-4xl font-bold text-center mb-8">
+              Nuestros Productos
+            </h1>
+            <p className="text-gray-600 text-center mb-12">
+              Descubre nuestra amplia gama de mangueras hidráulicas e
+              industriales
+            </p>
+          </div>
         </div>
+        <div className="animate-fade-in-up delay-200 duration-1000">
+          <Categories />
+        </div>
+        <div className="animate-fade-in-up delay-400 duration-1000">
+          <BestSelling />
+        </div>
+        <div className="animate-fade-in-up delay-600 duration-1000">
+          <LatestProducts />
+        </div>
+        <div className="animate-fade-in-up delay-800 duration-1000">
+          <Newsletter />
+        </div>
+        <Footer />
       </div>
-      <Categories />
-      <BestSelling />
-      <LatestProducts />
-      <Newsletter />
-      <Footer />
     </div>
   );
 }
