@@ -52,7 +52,7 @@ export default function ContactPage() {
       setShowWhatsAppMessage(false);
       // Redirect to WhatsApp
       window.open(
-        "https://wa.me/56551234567?text=Hola%20Liderflex%20Hidráulica,%20estoy%20interesado%20en%20sus%20productos%20de%20mangueras%20hidráulicas",
+        "https://wa.me/56959497551?text=Hola%20Liderflex%20Hidráulica,%20estoy%20interesado%20en%20sus%20productos%20de%20mangueras%20hidráulicas",
         "_blank",
       );
     }, 2000);
@@ -61,7 +61,6 @@ export default function ContactPage() {
   return (
     <CartProvider>
       <div className="min-h-screen bg-white">
-
         {/* Hero Section */}
         <section className="bg-gradient-to-r from-obsidian-900 to-obsidian-700 text-white py-16">
           <div className="container mx-auto px-4">
@@ -81,21 +80,40 @@ export default function ContactPage() {
         {/* Contact Information */}
         <section className="py-16">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-16">
+              {/* Sucursal Antofagasta */}
               <Card className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <MapPin className="w-8 h-8 text-yellow-600" />
                   </div>
-                  <h3 className="text-lg font-bold mb-2">Nuestra Ubicación</h3>
+                  <h3 className="text-lg font-bold mb-2">
+                    Sucursal Principal
+                  </h3>
                   <p className="text-gray-600 text-sm">
-                    Zona Industrial, Sector Hidráulico
+                    Maullín 5634
                     <br />
-                    Antofagasta, Chile 1240000
+                    Antofagasta, Chile
                   </p>
                 </CardContent>
               </Card>
 
+              {/* Nueva Sucursal Santiago */}
+              <Card className="text-center hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <MapPin className="w-8 h-8 text-blue-600" />
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">Sucursal Rendic</h3>
+                  <p className="text-gray-600 text-sm">
+                    Av. Antonio Rendic 5584
+                    <br />
+                    Antofagasta, Chile
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Teléfonos */}
               <Card className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="bg-obsidian-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -103,13 +121,14 @@ export default function ContactPage() {
                   </div>
                   <h3 className="text-lg font-bold mb-2">Número de Teléfono</h3>
                   <p className="text-gray-600 text-sm">
-                    (+56) 55-123-4567
+                    +569-59497551
                     <br />
-                    (+56) 55-987-6543
+                    +569-50084069
                   </p>
                 </CardContent>
               </Card>
 
+              {/* Correos */}
               <Card className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -117,13 +136,14 @@ export default function ContactPage() {
                   </div>
                   <h3 className="text-lg font-bold mb-2">Correo Electrónico</h3>
                   <p className="text-gray-600 text-sm">
-                    info@liderflexhidraulica.cl
+                    administracion@liderflexhidraulica.cl
                     <br />
-                    ventas@liderflexhidraulica.cl
+                    fmontano@liderflexhidraulica.cl
                   </p>
                 </CardContent>
               </Card>
 
+              {/* Horario */}
               <Card className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -133,9 +153,9 @@ export default function ContactPage() {
                     Horario de Atención
                   </h3>
                   <p className="text-gray-600 text-sm">
-                    Lun - Vie: 8:00 AM - 6:00 PM
+                    Lun - Vie: 9:00 AM - 6:00 PM
                     <br />
-                    Sáb: 9:00 AM - 2:00 PM
+                    Sáb: 10:00 AM - 1:00 PM
                   </p>
                 </CardContent>
               </Card>
@@ -297,7 +317,7 @@ export default function ContactPage() {
                         variant="outline"
                         className="w-full bg-transparent"
                       >
-                        Llamar Línea de Emergencia: (+56) 55-URGENTE
+                        Llamar Línea de Emergencia: +569-50084069
                       </Button>
                     </CardContent>
                   </Card>

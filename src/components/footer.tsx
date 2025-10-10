@@ -1,7 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, FacebookIcon, InstagramIcon } from "lucide-react";
 import Image from "next/image";
 
 const footerLinks = {
@@ -32,12 +31,9 @@ const footerLinks = {
 };
 
 const paymentMethods = [
-  "/placeholder.svg?height=30&width=50",
-  "/placeholder.svg?height=30&width=50",
-  "/placeholder.svg?height=30&width=50",
-  "/placeholder.svg?height=30&width=50",
-  "/placeholder.svg?height=30&width=50",
-  "/placeholder.svg?height=30&width=50",
+  "/cash.png?height=30&width=50",
+  "/visa.png?height=30&width=50",
+  "/mastercard.png?height=30&width=50",
 ];
 
 export default function Footer() {
@@ -58,20 +54,23 @@ export default function Footer() {
               hidráulicos.
             </p>
             <div className="flex gap-3">
-              <Image
-                src="/placeholder.svg?height=40&width=120"
-                alt="App Store"
-                width={120}
-                height={40}
-                className="rounded"
-              />
-              <Image
-                src="/placeholder.svg?height=40&width=120"
-                alt="Google Play"
-                width={120}
-                height={40}
-                className="rounded"
-              />
+              <a
+                href="https://www.facebook.com/tuempresa"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
+                <FacebookIcon className="w-6 h-6 text-gray-300 hover:text-yellow-400 transition-colors" />
+              </a>
+
+              <a
+                href="https://www.instagram.com/liderflexhidraulica"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <InstagramIcon className="w-6 h-6 text-gray-300 hover:text-yellow-400 transition-colors" />
+              </a>
             </div>
           </div>
 
@@ -81,7 +80,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {footerLinks.products.map((link, index) => (
                 // biome-ignore lint/suspicious/noArrayIndexKey: <TODO: Change it later>
-<li key={index}>
+                <li key={index}>
                   <a
                     href="#"
                     className="text-gray-300 hover:text-yellow-400 text-sm transition-colors"
@@ -117,18 +116,21 @@ export default function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-yellow-400 mt-1 flex-shrink-0" />
                 <div className="text-sm text-gray-300">
-                  <p>Zona Industrial, Sector Hidráulico</p>
-                  <p>Antofagasta, Chile 1240000</p>
+                  <p>Maullín 5634, Antofagasta</p>
+                  <p>Av. Antonio Rendic 5584, Antofagasta</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-yellow-400" />
-                <span className="text-sm text-gray-300">(+56) 55-123-4567</span>
+                <div className="text-sm text-gray-300">
+                  <p>+569-59497551</p>
+                  <p>+569-50084069</p>
+                </div>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-yellow-400" />
                 <span className="text-sm text-gray-300">
-                  info@liderflexhidraulica.cl
+                  administracion@liderflexhidraulica.cl
                 </span>
               </div>
             </div>
@@ -148,9 +150,9 @@ export default function Footer() {
                   key={index}
                   src={method || "/placeholder.svg"}
                   alt="Método de pago"
-                  width={50}
-                  height={30}
-                  className="rounded border border-gray-600"
+                  width={40}
+                  height={20}
+                  className="rounded"
                 />
               ))}
             </div>
@@ -158,8 +160,11 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Recent Purchase Notification */}
-      <div className="fixed bottom-4 left-4 bg-white rounded-lg shadow-lg p-4 max-w-sm z-50">
+      {/**
+       * 
+       * Recent Purchase Notification 
+       * 
+       * <div className="fixed bottom-4 left-4 bg-white rounded-lg shadow-lg p-4 max-w-sm z-50">
         <div className="flex items-center gap-3">
           <Image
             src="/placeholder.svg?height=40&width=40"
@@ -186,6 +191,8 @@ export default function Footer() {
           </Button>
         </div>
       </div>
+       * 
+       * */}
     </footer>
   );
 }

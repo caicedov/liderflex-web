@@ -9,11 +9,12 @@ export default function CompanyHero() {
     <section className="relative min-h-[600px] bg-gradient-to-r from-obsidian-900 via-obsidian-800 to-obsidian-700 overflow-hidden">
       <div className="absolute inset-0">
         <video
-          src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+          src="/videos/video-1.mp4"
           autoPlay
           loop
           muted
           playsInline
+          preload="auto"
           className="w-full h-full object-cover opacity-20"
           style={{ pointerEvents: "none" }}
         />

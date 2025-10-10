@@ -1,6 +1,6 @@
 "use client";
 import { useState, useMemo } from "react";
-import { products, Product } from "@/components/product-data";
+import { products } from "@/components/product-data";
 import ProductCard from "@/components/product-card";
 
 export default function ProductList() {
@@ -43,7 +43,7 @@ export default function ProductList() {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {filteredProducts.map((product) => (
-          <ProductCard key={product.id} product={product} lazy />
+          <ProductCard key={product.id} product={product} />
         ))}
         {filteredProducts.length === 0 && (
           <div className="col-span-full text-center text-gray-500 py-12">

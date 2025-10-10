@@ -1,5 +1,4 @@
 "use client";
-import Header from "@/components/header";
 import CompanyHero from "@/components/company-hero";
 import AboutSection from "@/components/about-section";
 import ServicesSection from "@/components/services-section";
@@ -10,35 +9,37 @@ import Footer from "@/components/footer";
 
 export default function HomePage() {
   return (
-    <div className="relative min-h-screen bg-white overflow-hidden">
-      {/* Video Background */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover opacity-30 z-0 animate-fade-in"
-        src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
-      />
-      <div className="relative z-10">
-        <CompanyHero />
-        <div className="animate-fade-in-up duration-1000">
-          <AboutSection />
+    <div className="relative bg-white overflow-hidden">
+      <section className="relative h-screen w-full flex items-center justify-center">
+        {/* Video Background */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          src="/videos/video-1.mp4"
+        />
+        {/* Overlay de color para contraste y legibilidad */}
+        <div className="absolute inset-0 bg-black/40 z-10" />
+
+        {/* Contenido principal del hero */}
+        <div className="relative z-20 text-center text-white px-4">
+          <CompanyHero />
         </div>
-        <div className="animate-fade-in-up delay-200 duration-1000">
+      </section>
+
+      {/** === Secciones siguientes === */}
+      <section className="relative z-30 bg-white">
+        <div className="animate-fade-in-up duration-1000">
           <ServicesSection />
         </div>
-        <div className="animate-fade-in-up delay-400 duration-1000">
+        <div className="animate-fade-in-up delay-200 duration-1000">
           <FeaturedProducts />
         </div>
-        <div className="animate-fade-in-up delay-600 duration-1000">
-          <WhyChooseUs />
-        </div>
-        <div className="animate-fade-in-up delay-800 duration-1000">
-          <Newsletter />
-        </div>
         <Footer />
-      </div>
+      </section>
     </div>
   );
 }
