@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import Footer from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -96,14 +95,15 @@ function ProductDetailContent({ params }: { params: { id: string } }) {
   };
 
   const getStockStatus = () => {
-    if (product.stockQuantity > 20)
+    const stockQuantity = product.stockQuantity ?? 0;
+    if (stockQuantity > 20)
       return { text: "En Stock", color: "text-green-600 border-green-600" };
-    if (product.stockQuantity > 5)
+    if (stockQuantity > 5)
       return {
         text: "Stock Limitado",
         color: "text-yellow-600 border-yellow-600",
       };
-    if (product.stockQuantity > 0)
+    if (stockQuantity > 0)
       return { text: "Últimas Unidades", color: "text-red-600 border-red-600" };
     return { text: "Agotado", color: "text-gray-600 border-gray-600" };
   };
@@ -131,7 +131,7 @@ function ProductDetailContent({ params }: { params: { id: string } }) {
           <div>
             <div className="mb-4">
               <Image
-                src={product.images[selectedImage] || "/placeholder.svg"}
+                src={product.images?.[selectedImage] || "/placeholder.svg"}
                 alt={product.name}
                 width={500}
                 height={500}
@@ -139,7 +139,7 @@ function ProductDetailContent({ params }: { params: { id: string } }) {
               />
             </div>
             <div className="flex gap-2">
-              {product.images.map((image, index) => (
+              {product.images?.map((image, index) => (
                 <button
                   type="button"
                   // biome-ignore lint/suspicious/noArrayIndexKey: <TODO: Change it later>
@@ -166,9 +166,9 @@ function ProductDetailContent({ params }: { params: { id: string } }) {
           {/* Product Info */}
           <div>
             <div className="flex items-center gap-2 mb-2">
-              {product.discount > 0 && (
+              {(product.discount ?? 0) > 0 && (
                 <Badge className="bg-yellow-400 text-black">
-                  -{product.discount}% DESCUENTO
+                  -{product.discount ?? 0}% DESCUENTO
                 </Badge>
               )}
               <Badge variant="outline" className={stockStatus.color}>
@@ -493,7 +493,6 @@ function ProductDetailContent({ params }: { params: { id: string } }) {
         </div>
       </div>
 
-      <Footer />
     </div>
   );
 }

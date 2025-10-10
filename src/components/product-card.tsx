@@ -32,7 +32,7 @@ export default function ProductCard({
         id: product.id,
         name: product.name,
         price: product.price,
-        image: product.image,
+        image: product.image || "/placeholder.svg",
       },
     });
   };
@@ -40,7 +40,7 @@ export default function ProductCard({
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
       <Star
-        key={i}
+        key={`star-${product.id}-${i}`}
         className={`w-3 h-3 ${i < rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"}`}
       />
     ));
@@ -74,7 +74,7 @@ export default function ProductCard({
                 <Image
                   src={
                     product.image ||
-                    (product.images && product.images[0]) ||
+                    (product.images?.[0]) ||
                     "/placeholder.svg"
                   }
                   alt={product.name}
@@ -189,7 +189,10 @@ export default function ProductCard({
       </Card>
 
       <QuickBuyModal
-        product={product}
+        product={{
+          ...product,
+          image: product.image || "/placeholder.svg"
+        }}
         isOpen={isQuickBuyOpen}
         onClose={() => setIsQuickBuyOpen(false)}
       />

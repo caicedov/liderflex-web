@@ -67,9 +67,9 @@ export default function ServicesSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
+          {services.map((service) => (
             <Card
-              key={index}
+              key={service.title}
               className="hover:shadow-lg transition-shadow group"
             >
               <CardContent className="p-8 text-center">

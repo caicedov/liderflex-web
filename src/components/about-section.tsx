@@ -37,7 +37,7 @@ export default function AboutSection() {
 
             <Button
               className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-3"
-              onClick={() => (window.location.href = "/about")}
+              onClick={() => { window.location.href = "/about"; }}
             >
               Conoce Más Sobre Nosotros <ArrowRight className="ml-2 w-4 h-4" />
             </Button>

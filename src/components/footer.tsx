@@ -78,11 +78,10 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Productos</h3>
             <ul className="space-y-2">
-              {footerLinks.products.map((link, index) => (
-                // biome-ignore lint/suspicious/noArrayIndexKey: <TODO: Change it later>
-                <li key={index}>
+              {footerLinks.products.map((link) => (
+                <li key={link}>
                   <a
-                    href="#"
+                    href={`/productos/${encodeURIComponent(link.toLowerCase().replace(/\s+/g, "-"))}`}
                     className="text-gray-300 hover:text-yellow-400 text-sm transition-colors"
                   >
                     {link}
@@ -96,10 +95,10 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Nuestra Empresa</h3>
             <ul className="space-y-2">
-              {footerLinks.company.map((link, index) => (
-                <li key={index}>
+              {footerLinks.company.map((link) => (
+                <li key={link}>
                   <a
-                    href="#"
+                    href={`/empresa/${encodeURIComponent(link.toLowerCase().replace(/\s+/g, "-"))}`}
                     className="text-gray-300 hover:text-yellow-400 text-sm transition-colors"
                   >
                     {link}
@@ -145,9 +144,9 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-400 mr-4">Aceptamos:</span>
-              {paymentMethods.map((method, index) => (
+              {paymentMethods.map((method) => (
                 <Image
-                  key={index}
+                  key={method}
                   src={method || "/placeholder.svg"}
                   alt="Método de pago"
                   width={40}

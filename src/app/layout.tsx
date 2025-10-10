@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import WhatsAppChatModal from "@/components/whatsapp-chat-modal";
 import { CartProvider } from "@/components/cart-context";
+import Footer from "@/components/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,6 +44,7 @@ export default function RootLayout({
           {children}
           {/* WhatsApp Chat Modal floating button */}
           <WhatsAppChatModal />
+          <Footer />
         </CartProvider>
       </body>
     </html>

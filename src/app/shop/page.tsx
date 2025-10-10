@@ -2,8 +2,6 @@
 import Categories from "@/components/categories";
 import BestSelling from "@/components/best-selling";
 import LatestProducts from "@/components/latest-products";
-import Newsletter from "@/components/newsletter";
-import Footer from "@/components/footer";
 
 export default function ShopPage() {
   return (
@@ -18,7 +16,6 @@ export default function ShopPage() {
         <div className="animate-fade-in-up delay-600 duration-1000">
           <LatestProducts />
         </div>
-        <Footer />
       </div>
     </div>
   );

@@ -1,16 +1,12 @@
 "use client";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Target, Eye, Award, Users, Wrench } from "lucide-react";
 import { CartProvider } from "@/components/cart-context";
-import Image from "next/image";
 
 export default function AboutPage() {
   return (
     <CartProvider>
       <div className="min-h-screen bg-white">
-
         {/* Hero Section */}
         <section className="relative bg-gradient-to-r from-obsidian-900 to-obsidian-700 text-white py-16 overflow-hidden">
           <div className="container mx-auto px-4 relative z-10 animate-fade-in-up">
@@ -32,13 +28,17 @@ export default function AboutPage() {
               <div className="animate-fade-in-up">
                 <h2 className="text-3xl font-bold mb-6">Nuestra Historia</h2>
                 <p className="text-gray-600 mb-4 transition-colors duration-300 hover:text-yellow-600">
-                  Dedicados a la fabricación, comercialización y distribución de productos oleo hidráulicos.
+                  Dedicados a la fabricación, comercialización y distribución de
+                  productos oleo hidráulicos.
                 </p>
                 <p className="text-gray-600 mb-4 transition-colors duration-300 hover:text-yellow-600">
-                  Años de experiencia apoyando los procesos productivos de nuestros clientes en la región minera más grade del mundo.
+                  Años de experiencia apoyando los procesos productivos de
+                  nuestros clientes en la región minera más grade del mundo.
                 </p>
                 <p className="text-gray-600 transition-colors duration-300 hover:text-yellow-600">
-                  Cumpliendo los altos estándares del mercado bajo el uso de nuevas tecnologías en conjunto con el trabajo optimo de profesionales altamente calificados.
+                  Cumpliendo los altos estándares del mercado bajo el uso de
+                  nuevas tecnologías en conjunto con el trabajo optimo de
+                  profesionales altamente calificados.
                 </p>
               </div>
               <div className="relative group animate-fade-in-up">
@@ -68,8 +68,12 @@ export default function AboutPage() {
                   </div>
                   <h3 className="text-2xl font-bold mb-4">Nuestra Misión</h3>
                   <p className="text-gray-600">
-                    Suministrar productos y servicios oleo hidráulicos de forma oportuna,
-                    consolidándonos como un aliado estrategico confiable e innovador, anticipándonos a las exigencias y expectativas requeridas por nuestros clientes para entregar un servicio de calidad, satisfaciendo integramente sus necesidades.
+                    Suministrar productos y servicios oleo hidráulicos de forma
+                    oportuna, consolidándonos como un aliado estrategico
+                    confiable e innovador, anticipándonos a las exigencias y
+                    expectativas requeridas por nuestros clientes para entregar
+                    un servicio de calidad, satisfaciendo integramente sus
+                    necesidades.
                   </p>
                 </CardContent>
               </Card>
@@ -81,7 +85,10 @@ export default function AboutPage() {
                   </div>
                   <h3 className="text-2xl font-bold mb-4">Nuestra Visión</h3>
                   <p className="text-gray-600">
-                    Para el año 2026, ser el principal proveedor y aliado estratégico para el sector minero e industrial de productos e insumos oleo hidráulicos, industriales y neumáticos de la mas alta calidad, cubriendo toda la zona norte del país.
+                    Para el año 2026, ser el principal proveedor y aliado
+                    estratégico para el sector minero e industrial de productos
+                    e insumos oleo hidráulicos, industriales y neumáticos de la
+                    mas alta calidad, cubriendo toda la zona norte del país.
                   </p>
                 </CardContent>
               </Card>
@@ -109,7 +116,8 @@ export default function AboutPage() {
                   Calidad
                 </h3>
                 <p className="text-gray-600 group-hover:text-yellow-600 transition-colors duration-300">
-                  Productos seleccionados cuidadosamente para garantizar la eficiencia y satisfacción de nuestros clientes.
+                  Productos seleccionados cuidadosamente para garantizar la
+                  eficiencia y satisfacción de nuestros clientes.
                 </p>
               </div>
 
@@ -121,7 +129,8 @@ export default function AboutPage() {
                   Confianza
                 </h3>
                 <p className="text-gray-600 group-hover:text-obsidian-800 transition-colors duration-300">
-                  Servicio, asesoramiento y soluciones personalizadas que satisfagan fiablemente las necesidades de la industria.
+                  Servicio, asesoramiento y soluciones personalizadas que
+                  satisfagan fiablemente las necesidades de la industria.
                 </p>
               </div>
 
@@ -133,13 +142,13 @@ export default function AboutPage() {
                   Innovación
                 </h3>
                 <p className="text-gray-600 group-hover:text-green-600 transition-colors duration-300">
-                  Productos y servicios innovadores que nos permiten contribuir a mejorar los procesos productivos.
+                  Productos y servicios innovadores que nos permiten contribuir
+                  a mejorar los procesos productivos.
                 </p>
               </div>
             </div>
           </div>
         </section>
-
 
         {/* Stats Section */}
         <section className="py-16 bg-yellow-400">
@@ -172,8 +181,6 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-
-        <Footer />
       </div>
     </CartProvider>
   );
