@@ -10,6 +10,7 @@ import {
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { useCart } from "@/components/cart-context";
 import Image from "next/image";
+import { useState } from "react";
 
 interface CartSheetProps {
   isOpen: boolean;
@@ -18,6 +19,7 @@ interface CartSheetProps {
 
 export default function CartSheet({ isOpen, onClose }: CartSheetProps) {
   const { state, dispatch } = useCart();
+  const [downloading, setDownloading] = useState(false);
 
   const updateQuantity = (id: string, quantity: number) => {
     dispatch({ type: "UPDATE_QUANTITY", payload: { id, quantity } });
@@ -26,6 +28,54 @@ export default function CartSheet({ isOpen, onClose }: CartSheetProps) {
   const removeItem = (id: string) => {
     dispatch({ type: "REMOVE_ITEM", payload: id });
   };
+
+  const proceedToQuote = async () => {
+    try {
+      setDownloading(true);
+      const items = state.items.map((i) => ({
+        id: i.id,
+        name: i.name,
+        price: i.price,
+        quantity: i.quantity,
+        image: i.image,
+      }));
+      const payload = {
+        items,
+        // Si tienes datos del cliente, agregarlos aquí:
+        // customer: { name: "...", email: "...", phone: "...", ... },
+        // notes: "Observaciones de la cotización"
+      };
+      const res = await fetch("/api/quote", {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err?.error || "Error al generar la cotización");
+      }
+
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+
+      // Descarga directa
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `cotizacion_${Date.now()}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+
+      // Opcional: cerrar el carrito tras generar
+      onClose?.();
+    } catch (e: any) {
+      alert(e.message || "No se pudo generar la cotización");
+    } finally {
+      setDownloading(false);
+    }
+  }
 
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
@@ -104,15 +154,18 @@ export default function CartSheet({ isOpen, onClose }: CartSheetProps) {
                 </span>
               </div>
               <div className="space-y-2">
-                <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-black">
-                  Proceder al Pago
+                <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-black"
+                onClick={proceedToQuote}
+                disabled={downloading}>
+                
+                  {downloading ? "Generando PDF..." : "Proceder a la cotización"}
                 </Button>
                 <Button
                   variant="outline"
                   className="w-full bg-transparent"
                   onClick={onClose}
                 >
-                  Continuar Comprando
+                  Continuar Cotizando
                 </Button>
               </div>
             </div>

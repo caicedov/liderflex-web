@@ -43,7 +43,7 @@ export const manguera_r1: Product = {
   id: "r1",
   name: "Manguera Hidráulica SAE 100 R1",
   category: "Mangueras Hidráulicas",
-  price: 175000,
+  price: 500000,
   originalPrice: 180000,
   rating: 5,
   reviews: 24,
@@ -51,7 +51,7 @@ export const manguera_r1: Product = {
   inStock: true,
   stockQuantity: 150,
   images: [
-    "/placeholder.svg?height=400&width=400",
+    "/sae100r1.png?height=400&width=400",
     "/placeholder.svg?height=400&width=400",
   ],
   description: "Manguera para mediana presión. Tubo caucho sintético reforzado con una trenza de alambre y cubierta de caucho sintético.",

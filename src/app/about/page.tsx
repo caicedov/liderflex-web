@@ -43,7 +43,7 @@ export default function AboutPage() {
               </div>
               <div className="relative group animate-fade-in-up">
                 <video
-                  src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+                  src="/videos/video-1.mp4"
                   autoPlay
                   loop
                   muted

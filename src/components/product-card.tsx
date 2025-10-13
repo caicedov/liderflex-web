@@ -162,7 +162,7 @@ export default function ProductCard({
               className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold transition-all duration-200 hover:shadow-md"
             >
               <Zap className="w-4 h-4 mr-2" />
-              Compra Rápida
+              Cotización Rápida
             </Button>
 
             <div className="flex gap-2">

@@ -88,7 +88,7 @@ export default function QuickBuyModal({
       <DialogContent className="max-w-md mx-auto bg-white shadow-2xl rounded-xl">
         <DialogHeader>
           <DialogTitle className="flex items-center justify-between">
-            <span>Compra Rápida</span>
+            <span>Cotización Rápida</span>
             <Button variant="ghost" size="icon" onClick={onClose}>
               <X className="h-4 w-4" />
             </Button>

@@ -6,46 +6,39 @@ import { Wrench, Truck, Shield, Clock, Phone, Settings } from "lucide-react";
 const services = [
   {
     icon: Wrench,
-    title: "Ensamblaje de Mangueras Personalizadas",
+    title: "Fabricación de mangueras y flexibles hidráulicos",
     description:
-      "Servicios profesionales de ensamblaje de mangueras hidráulicas con conexiones de precisión y pruebas",
+      "Proporcionamos ensamble y prensado de mangueras hidráulicas a medida, con precisión y eficiencia, garantizando conexiones seguras y rendimiento óptimo en cualquier sistema de presión",
     color: "bg-yellow-100 text-yellow-600",
   },
   {
     icon: Truck,
-    title: "Entrega Rápida",
+    title: "Mantenimiento y reparación de componentes hidráulicos",
     description:
-      "Entrega el mismo día disponible para reemplazos urgentes de mangueras hidráulicas",
+      "Brindamos mantenimiento, reparación y overhaul de componentes hidráulicos como cilindros, bombas y equipos industriales, adaptándonos a las exigencias del sector minero, la construcción y la manufactura, mediante soluciones eficientes de altos estándares técnicos, prolongando la vida útil de sus equipos y optimizando su rendimiento",
     color: "bg-obsidian-100 text-obsidian-800",
   },
   {
     icon: Shield,
-    title: "Garantía de Calidad",
+    title: "Fabricación de tuberías hidráulicas",
     description:
-      "Todos los productos pasan por pruebas rigurosas para asegurar máxima seguridad y rendimiento",
+      "Fabricamos, adaptamos y reparamos tuberías hidráulicas para sistemas industriales de alta exigencia, con enfoque ténico y precisión dimensional, garantizando la compatibilidad, resistencia y precisión en cada proyecto",
     color: "bg-green-100 text-green-600",
   },
   {
     icon: Clock,
-    title: "Servicio de Emergencia 24/7",
+    title: "Asesoramiento técnico especializado",
     description:
-      "Soporte las 24 horas para fallas críticas de sistemas hidráulicos",
+      "Ofrecemos asesoría experta para la selección de mangueras industriales, asegurando la mejor elección para las demadas específicas de cada sector, ya sea minería, construcción o manufactura",
     color: "bg-red-100 text-red-600",
   },
   {
     icon: Phone,
-    title: "Consultoría Técnica",
+    title: "Diagnóstico y levantamiento 24/7",
     description:
-      "Asesoramiento experto de nuestros ingenieros hidráulicos para aplicaciones complejas",
+      "Realizamos evaluaciones directamente en el lugar de trabajo para minimizar el tiempo de inactividad y optimizar los tiempos de respuesta, brindando soluciones efectivas 24/7, evitando la detención de los procesos productivos",
     color: "bg-purple-100 text-purple-600",
-  },
-  {
-    icon: Settings,
-    title: "Programas de Mantenimiento",
-    description:
-      "Planes de mantenimiento preventivo para extender la vida de tus sistemas hidráulicos",
-    color: "bg-orange-100 text-orange-600",
-  },
+  }
 ];
 
 export default function ServicesSection() {

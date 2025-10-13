@@ -10,7 +10,6 @@ import {
   Share2,
   Minus,
   Plus,
-  Truck,
   Shield,
   RotateCcw,
 } from "lucide-react";
@@ -19,41 +18,7 @@ import Image from "next/image";
 import {
   products,
   getProductById,
-  Product,
-  ProductSize,
 } from "@/components/product-data";
-
-const relatedProducts = [
-  {
-    id: "2",
-    name: "Manguera Hidráulica Trenzada de Acero 3/4 pulgada",
-    price: 110,
-    originalPrice: 115,
-    rating: 4,
-    image: "/placeholder.svg?height=200&width=200",
-  },
-  {
-    id: "3",
-    name: "Manguera de Aire Industrial 50ft",
-    price: 249,
-    rating: 4,
-    image: "/placeholder.svg?height=200&width=200",
-  },
-  {
-    id: "4",
-    name: "Kit de Manguera Hidráulica de Alta Presión",
-    price: 110,
-    rating: 4,
-    image: "/placeholder.svg?height=200&width=200",
-  },
-  {
-    id: "5",
-    name: "Manguera Neumática Flexible 25ft",
-    price: 228,
-    rating: 4,
-    image: "/placeholder.svg?height=200&width=200",
-  },
-];
 
 function ProductDetailContent({ params }: { params: { id: string } }) {
   const [selectedImage, setSelectedImage] = useState(0);
@@ -283,10 +248,6 @@ function ProductDetailContent({ params }: { params: { id: string } }) {
             {/* Product Benefits */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               <div className="flex items-center gap-2 text-sm">
-                <Truck className="w-4 h-4 text-green-600" />
-                <span>Envío gratis sobre $100</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm">
                 <Shield className="w-4 h-4 text-obsidian-800" />
                 <span>Garantía 2 años</span>
               </div>
@@ -299,7 +260,7 @@ function ProductDetailContent({ params }: { params: { id: string } }) {
             <div className="border-t pt-6">
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>
-                  <span className="font-semibold">SKU:</span>{" "}{selectedSize ? `-${selectedSize}` : ""}
+                  <span className="font-semibold">SKU:</span>{" "}{selectedSize ? `${selectedSize}` : ""}
                 </div>
                 <div>
                   <span className="font-semibold">Categoría:</span> Mangueras
@@ -323,9 +284,6 @@ function ProductDetailContent({ params }: { params: { id: string } }) {
             <TabsTrigger value="description">Descripción</TabsTrigger>
             <TabsTrigger value="specifications">Especificaciones</TabsTrigger>
             <TabsTrigger value="applications">Aplicaciones</TabsTrigger>
-            <TabsTrigger value="reviews">
-              Reseñas ({product.reviews})
-            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="description" className="mt-6">
@@ -441,56 +399,6 @@ function ProductDetailContent({ params }: { params: { id: string } }) {
             </div>
           </TabsContent>
         </Tabs>
-
-        {/* Related Products */}
-        <div>
-          <h2 className="text-2xl font-bold mb-8">Productos Relacionados</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {relatedProducts.map((relatedProduct) => (
-              <Card
-                key={relatedProduct.id}
-                className="group hover:shadow-lg transition-shadow"
-              >
-                <CardContent className="p-4">
-                  <div className="relative mb-4">
-                    <Image
-                      src={relatedProduct.image || "/placeholder.svg"}
-                      alt={relatedProduct.name}
-                      width={200}
-                      height={200}
-                      className="w-full h-40 object-cover rounded-md"
-                    />
-                  </div>
-                  <h3 className="font-semibold text-sm mb-2 line-clamp-2">
-                    {relatedProduct.name}
-                  </h3>
-                  <div className="flex items-center mb-2">
-                    {renderStars(relatedProduct.rating)}
-                  </div>
-                  <div className="flex items-center gap-2 mb-3">
-                    {relatedProduct.originalPrice &&
-                      relatedProduct.originalPrice !== relatedProduct.price && (
-                        <span className="text-gray-400 line-through text-sm">
-                          ${relatedProduct.originalPrice}
-                        </span>
-                      )}
-                    <span className="font-bold text-lg">
-                      ${relatedProduct.price}
-                    </span>
-                  </div>
-                  <Button
-                    className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold"
-                    onClick={() => {
-                      window.location.href = `/product/${relatedProduct.id}`;
-                    }}
-                  >
-                    VER PRODUCTO
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
       </div>
 
     </div>

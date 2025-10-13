@@ -1,11 +1,7 @@
 "use client";
 import CompanyHero from "@/components/company-hero";
-import AboutSection from "@/components/about-section";
 import ServicesSection from "@/components/services-section";
 import FeaturedProducts from "@/components/featured-products";
-import WhyChooseUs from "@/components/why-choose-us";
-import Newsletter from "@/components/newsletter";
-import Footer from "@/components/footer";
 
 export default function HomePage() {
   return (
@@ -38,7 +34,6 @@ export default function HomePage() {
         <div className="animate-fade-in-up delay-200 duration-1000">
           <FeaturedProducts />
         </div>
-        <Footer />
       </section>
     </div>
   );
