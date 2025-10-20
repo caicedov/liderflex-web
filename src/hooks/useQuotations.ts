@@ -98,9 +98,12 @@ export function useQuotations() {
         updated_at: serverTimestamp(),
       };
 
-      const quotationsRef = collection(db, 'quotations');
-      const docRef = await addDoc(quotationsRef, quotationData);
+      console.log("Quotation Data: ", quotationData)
 
+      const quotationsRef = collection(db, 'quotations');
+      console.log("Quotation REF:", quotationsRef)
+      const docRef = await addDoc(quotationsRef, quotationData);
+      console.log("Doc Ref: ", docRef)
       // Crear notificación para el usuario
       const notificationsRef = collection(db, 'notifications');
       await addDoc(notificationsRef, {

@@ -38,20 +38,25 @@ export async function generateQuotationNumber(): Promise<string> {
 
 // Crear perfil de usuario
 export async function createUserProfile(
-  userId: string, 
-  email: string, 
-  fullName?: string
+  userId: string,
+  email: string,
+  data?: {
+    fullName?: string;
+    companyName?: string;
+    phone?: string;
+    rut?: string;
+  }
 ) {
   const profileRef = doc(db, 'profiles', userId);
   const profileData = {
     id: userId,
     email,
-    full_name: fullName || '',
-    company_name: '',
-    phone: '',
+    full_name: data?.fullName || '',
+    company_name: data?.companyName || '',
+    phone: data?.phone || '',
     address: '',
     city: '',
-    rut: '',
+    rut: data?.rut || '',
     avatar_url: '',
     user_type: 'customer' as const,
     created_at: serverTimestamp(),

@@ -54,7 +54,7 @@ export default function AuthModal({ isOpen, onClose, defaultTab = 'login' }: Aut
       return;
     }
 
-    const { error } = await signUp(email, password, fullName);
+    const { error } = await signUp(email, password, fullName, companyName, phone, rut);
     if (error) {
       setErrors({ general: error });
     } else {

@@ -15,7 +15,14 @@ interface AuthContextType {
   session: FirebaseUser | null;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
-  signUp: (email: string, password: string, fullName: string) => Promise<{ error: string | null }>;
+  signUp: (
+  email: string,
+  password: string,
+  fullName: string,
+  companyName?: string,
+  phone?: string,
+  rut?: string
+) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
   resetPassword: (email: string) => Promise<{ error: string | null }>;
   updateProfile: (data: Partial<Profile>) => Promise<{ error: string | null }>;
@@ -93,35 +100,47 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const signUp = async (email: string, password: string, fullName: string) => {
-    try {
-      setLoading(true);
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      
-      // Crear perfil en Firestore
-      await createUserProfile(userCredential.user.uid, email, fullName);
-      
-      return { error: null };
-    } catch (error: any) {
-      let errorMessage = 'Error inesperado durante el registro';
-      
-      switch (error.code) {
-        case 'auth/email-already-in-use':
-          errorMessage = 'Este email ya está registrado';
-          break;
-        case 'auth/invalid-email':
-          errorMessage = 'Email inválido';
-          break;
-        case 'auth/weak-password':
-          errorMessage = 'La contraseña debe tener al menos 6 caracteres';
-          break;
-      }
-      
-      return { error: errorMessage };
-    } finally {
-      setLoading(false);
+  const signUp = async (
+  email: string,
+  password: string,
+  fullName: string,
+  companyName?: string,
+  phone?: string,
+  rut?: string
+) => {
+  try {
+    setLoading(true);
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
+    // Ahora pasamos los datos completos
+    await createUserProfile(userCredential.user.uid, email, {
+      fullName,
+      companyName,
+      phone,
+      rut,
+    });
+
+    return { error: null };
+  } catch (error: any) {
+    let errorMessage = 'Error inesperado durante el registro';
+
+    switch (error.code) {
+      case 'auth/email-already-in-use':
+        errorMessage = 'Este email ya está registrado';
+        break;
+      case 'auth/invalid-email':
+        errorMessage = 'Email inválido';
+        break;
+      case 'auth/weak-password':
+        errorMessage = 'La contraseña debe tener al menos 6 caracteres';
+        break;
     }
-  };
+
+    return { error: errorMessage };
+  } finally {
+    setLoading(false);
+  }
+};
 
   const signOut = async () => {
     await firebaseSignOut(auth);
