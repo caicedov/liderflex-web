@@ -47,7 +47,7 @@ export default function Header() {
                   src="/logo-white.png"
                   alt="Liderflex Hidráulica"
                   className="mr-3 drop-shadow-lg"
-                  width={140}
+                  width={180}
                   height={24}
                   priority
                 />

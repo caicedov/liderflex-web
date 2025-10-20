@@ -40,6 +40,12 @@ const featured = [
     name: "Flanges ISO / DIN",
     imageUrl: ["/fla-1.png", "/fla-2.png", "/fla-3.png", "/fla-4.png"],
     url: "/featured/6"
+  },
+  {
+    id: "7",
+    name: "Línea de ferreteria industrial",
+    imageUrl: ["fi-1.png"],
+    url: "/featured/7"
   }
 
 ]

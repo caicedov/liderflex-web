@@ -91,11 +91,10 @@ export default function CompanyHero() {
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold text-white mb-1">
-                      Calidad Premium
+                      Calidad
                     </h4>
                     <p className="text-gray-200 text-sm">
-                      Productos certificados ISO que superan los estándares de
-                      la industria
+                      Productos seleccionados cuidadosamente
                     </p>
                   </div>
                 </div>
@@ -106,10 +105,10 @@ export default function CompanyHero() {
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold text-white mb-1">
-                      Soporte Experto
+                      Confianza
                     </h4>
                     <p className="text-gray-200 text-sm">
-                      Experiencia técnica y servicio al cliente 24/7
+                      Servicio, asesoramiento y soluciones personalizadas
                     </p>
                   </div>
                 </div>
@@ -120,11 +119,10 @@ export default function CompanyHero() {
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold text-white mb-1">
-                      Soluciones Personalizadas
+                      Innovación
                     </h4>
                     <p className="text-gray-200 text-sm">
-                      Soluciones hidráulicas adaptadas a tus necesidades
-                      específicas
+                      Productos y servicios innovadores
                     </p>
                   </div>
                 </div>
