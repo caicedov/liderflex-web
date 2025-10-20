@@ -3,52 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import ProductImageCard from "./product-image-card";
-
-const featured = [
-  {
-    id: "1",
-    name: "Manguera hidráulicas de alto rendimiento",
-    imageUrl: ["/mhar-1.png","/mhar-2.png","/mhar-3.png", "/mhar-4.png"],
-    url: "/featured/1"
-  },
-  {
-    id: "2",
-    name: "Mangueras industriales versátiles",
-    imageUrl: ["/miv-3.png","/miv-1.png","/miv-2.png"],
-    url: "/featured/2"
-  },
-  {
-    id: "3",
-    name: "Línea neumática",
-    imageUrl: ["/ln-1.png","/ln-2.png","/ln-3.png", "/ln-4.png", "/ln-5.png"],
-    url: "/featured/3"
-  },
-  {
-    id: "4",
-    name: "Adaptadores y fitting's",
-    imageUrl: ["/af-1.png",],
-    url: "/featured/4"
-  },
-  {
-    id: "5",
-    name: "Válvulas y acoples",
-    imageUrl: ["/va-3.png", "/va-1.png", "/va-2.png", "/va-4.png"],
-    url: "/featured/5"
-  },
-  {
-    id: "6",
-    name: "Flanges ISO / DIN",
-    imageUrl: ["/fla-1.png", "/fla-2.png", "/fla-3.png", "/fla-4.png"],
-    url: "/featured/6"
-  },
-  {
-    id: "7",
-    name: "Línea de ferreteria industrial",
-    imageUrl: ["fi-1.png"],
-    url: "/featured/7"
-  }
-
-]
+import { featuredProducts } from "@/data/featuredProducts";
 
 export default function FeaturedProducts() {
   return (
@@ -69,7 +24,7 @@ export default function FeaturedProducts() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {featured
+          {featuredProducts
             .map((product) => (
               <ProductImageCard key={product.id} product={product} />
             ))}
