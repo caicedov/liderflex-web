@@ -10,13 +10,13 @@ import {
   User, 
   FileText, 
   Bell, 
-  TrendingUp, 
   Clock, 
   CheckCircle2,
-  AlertCircle,
   Package
 } from 'lucide-react';
-import { supabase } from '@/lib/supabase';
+import { db } from '@/lib/firebase';
+import { collection, query, where, orderBy, getDocs } from 'firebase/firestore';
+import { timestampToString } from '@/lib/firebase-utils';
 
 interface DashboardStats {
   totalQuotations: number;
@@ -57,37 +57,46 @@ export default function Dashboard() {
     if (!user) return;
 
     try {
-      // Obtener estadísticas de cotizaciones
-      const { data: quotations, error: quotationsError } = await supabase
-        .from('quotations')
-        .select('id, quotation_number, status, total_items, created_at')
-        .eq('user_id', user.id)
-        .order('created_at', { ascending: false });
+      setDashboardLoading(true);
 
-      if (quotationsError) throw quotationsError;
+      // 1️⃣ Obtener cotizaciones del usuario
+      const quotationsRef = collection(db, 'quotations');
+      const q = query(
+        quotationsRef,
+        where('user_id', '==', user.uid),
+        orderBy('created_at', 'desc')
+      );
+      const quotationsSnap = await getDocs(q);
 
-      // Calcular estadísticas
-      const total = quotations?.length || 0;
-      const pending = quotations?.filter(q => q.status === 'pending').length || 0;
-      const approved = quotations?.filter(q => q.status === 'approved').length || 0;
+      const quotations = quotationsSnap.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+        created_at: timestampToString(doc.data().created_at),
+      })) as RecentQuotation[];
 
-      // Obtener notificaciones no leídas
-      const { data: notifications, error: notificationsError } = await supabase
-        .from('notifications')
-        .select('id')
-        .eq('user_id', user.id)
-        .eq('read', false);
+      // 2️⃣ Calcular estadísticas
+      const total = quotations.length;
+      const pending = quotations.filter(q => q.status === 'pending').length;
+      const approved = quotations.filter(q => q.status === 'approved').length;
 
-      if (notificationsError) throw notificationsError;
+      // 3️⃣ Obtener notificaciones no leídas
+      const notificationsRef = collection(db, 'notifications');
+      const nQ = query(
+        notificationsRef,
+        where('user_id', '==', user.uid),
+        where('read', '==', false)
+      );
+      const notificationsSnap = await getDocs(nQ);
 
+      // 4️⃣ Guardar datos en estado
       setStats({
         totalQuotations: total,
         pendingQuotations: pending,
         approvedQuotations: approved,
-        unreadNotifications: notifications?.length || 0
+        unreadNotifications: notificationsSnap.size
       });
 
-      setRecentQuotations(quotations?.slice(0, 5) || []);
+      setRecentQuotations(quotations.slice(0, 5));
     } catch (error) {
       console.error('Error fetching dashboard data:', error);
     } finally {
@@ -119,6 +128,7 @@ export default function Dashboard() {
     }
   };
 
+  // 🌀 Loading state
   if (loading || dashboardLoading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
