@@ -1,9 +1,24 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { supabase } from '@/lib/supabase';
+import { db } from '@/lib/firebase';
+import {
+  collection,
+  doc,
+  addDoc,
+  getDoc,
+  getDocs,
+  updateDoc,
+  deleteDoc,
+  query,
+  where,
+  orderBy,
+  onSnapshot,
+  serverTimestamp,
+} from 'firebase/firestore';
 import { useAuth } from '@/contexts/auth-context';
 import { useCart } from '@/components/cart-context';
+import { generateQuotationNumber, timestampToString } from '@/lib/firebase-utils';
 
 export interface Quotation {
   id: string;
@@ -40,14 +55,22 @@ export function useQuotations() {
       setLoading(true);
       setError(null);
 
-      const { data, error: fetchError } = await supabase
-        .from('quotations')
-        .select('*')
-        .eq('user_id', user.id)
-        .order('created_at', { ascending: false });
+      const quotationsRef = collection(db, 'quotations');
+      const q = query(
+        quotationsRef,
+        where('user_id', '==', user.uid),
+        orderBy('created_at', 'desc')
+      );
 
-      if (fetchError) throw fetchError;
-      setQuotations(data || []);
+      const snapshot = await getDocs(q);
+      const quotationsData = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+        created_at: timestampToString(doc.data().created_at),
+        updated_at: timestampToString(doc.data().updated_at),
+      })) as Quotation[];
+
+      setQuotations(quotationsData);
     } catch (err: any) {
       setError(err.message || 'Error al cargar cotizaciones');
     } finally {
@@ -61,41 +84,44 @@ export function useQuotations() {
 
     try {
       // Generar número de cotización
-      const { data: quotationNumber, error: numberError } = await supabase
-        .rpc('generate_quotation_number');
-
-      if (numberError) throw numberError;
+      const quotationNumber = await generateQuotationNumber();
 
       // Crear cotización
       const quotationData = {
-        user_id: user.id,
+        user_id: user.uid,
         quotation_number: quotationNumber,
         items: data.items,
-        notes: data.notes,
-        total_items: data.items.reduce((sum: number, item: any) => sum + item.quantity, 0)
+        notes: data.notes || '',
+        total_items: data.items.reduce((sum: number, item: any) => sum + item.quantity, 0),
+        status: 'pending' as const,
+        created_at: serverTimestamp(),
+        updated_at: serverTimestamp(),
       };
 
-      const { data: newQuotation, error: createError } = await supabase
-        .from('quotations')
-        .insert([quotationData])
-        .select()
-        .single();
-
-      if (createError) throw createError;
+      const quotationsRef = collection(db, 'quotations');
+      const docRef = await addDoc(quotationsRef, quotationData);
 
       // Crear notificación para el usuario
-      await supabase
-        .from('notifications')
-        .insert([{
-          user_id: user.id,
-          title: 'Cotización Creada',
-          message: `Tu cotización ${quotationNumber} ha sido creada exitosamente y está siendo procesada.`,
-          type: 'success',
-          action_url: `/dashboard/quotations/${newQuotation.id}`
-        }]);
+      const notificationsRef = collection(db, 'notifications');
+      await addDoc(notificationsRef, {
+        user_id: user.uid,
+        title: 'Cotización Creada',
+        message: `Tu cotización ${quotationNumber} ha sido creada exitosamente y está siendo procesada.`,
+        type: 'success',
+        read: false,
+        action_url: `/dashboard/quotations/${docRef.id}`,
+        created_at: serverTimestamp(),
+      });
 
       // Limpiar carrito después de crear cotización
       dispatch({ type: 'CLEAR_CART' });
+
+      const newQuotation = {
+        id: docRef.id,
+        ...quotationData,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      } as Quotation;
 
       // Actualizar lista local
       setQuotations(prev => [newQuotation, ...prev]);
@@ -111,47 +137,58 @@ export function useQuotations() {
     if (!user) return { data: null, error: 'No hay usuario autenticado' };
 
     try {
-      const { data, error } = await supabase
-        .from('quotations')
-        .select('*')
-        .eq('id', id)
-        .eq('user_id', user.id)
-        .single();
+      const quotationRef = doc(db, 'quotations', id);
+      const quotationSnap = await getDoc(quotationRef);
 
-      if (error) throw error;
-      return { data, error: null };
+      if (!quotationSnap.exists()) {
+        throw new Error('Cotización no encontrada');
+      }
+
+      const data = quotationSnap.data();
+      
+      // Verificar que pertenece al usuario
+      if (data.user_id !== user.uid) {
+        throw new Error('No tienes permiso para ver esta cotización');
+      }
+
+      const quotation = {
+        id: quotationSnap.id,
+        ...data,
+        created_at: timestampToString(data.created_at),
+        updated_at: timestampToString(data.updated_at),
+      } as Quotation;
+
+      return { data: quotation, error: null };
     } catch (err: any) {
       return { data: null, error: err.message || 'Cotización no encontrada' };
     }
   };
 
-  // Update quotation (solo para estados que el usuario puede cambiar)
+  // Update quotation
   const updateQuotation = async (id: string, updates: Partial<Quotation>) => {
     if (!user) throw new Error('No hay usuario autenticado');
 
     try {
-      // Solo permitir actualizar ciertos campos por parte del usuario
+      const quotationRef = doc(db, 'quotations', id);
+      
+      // Solo permitir actualizar ciertos campos
       const allowedUpdates = {
         notes: updates.notes,
-        // Los usuarios no pueden cambiar el estado directamente
+        updated_at: serverTimestamp(),
       };
 
-      const { data, error } = await supabase
-        .from('quotations')
-        .update(allowedUpdates)
-        .eq('id', id)
-        .eq('user_id', user.id)
-        .select()
-        .single();
-
-      if (error) throw error;
+      await updateDoc(quotationRef, allowedUpdates);
 
       // Actualizar lista local
       setQuotations(prev =>
-        prev.map(q => (q.id === id ? { ...q, ...data } : q))
+        prev.map(q => (q.id === id ? { 
+          ...q, 
+          ...updates,
+          updated_at: new Date().toISOString(),
+        } : q))
       );
 
-      return { data, error: null };
+      return { data: updates, error: null };
     } catch (err: any) {
       return { data: null, error: err.message || 'Error al actualizar cotización' };
     }
@@ -162,14 +199,24 @@ export function useQuotations() {
     if (!user) throw new Error('No hay usuario autenticado');
 
     try {
-      const { error } = await supabase
-        .from('quotations')
-        .delete()
-        .eq('id', id)
-        .eq('user_id', user.id)
-        .eq('status', 'pending'); // Solo se pueden eliminar las pendientes
+      const quotationRef = doc(db, 'quotations', id);
+      const quotationSnap = await getDoc(quotationRef);
 
-      if (error) throw error;
+      if (!quotationSnap.exists()) {
+        throw new Error('Cotización no encontrada');
+      }
+
+      const data = quotationSnap.data();
+      
+      if (data.user_id !== user.uid) {
+        throw new Error('No tienes permiso para eliminar esta cotización');
+      }
+
+      if (data.status !== 'pending') {
+        throw new Error('Solo puedes eliminar cotizaciones pendientes');
+      }
+
+      await deleteDoc(quotationRef);
 
       // Actualizar lista local
       setQuotations(prev => prev.filter(q => q.id !== id));
@@ -199,7 +246,7 @@ export function useQuotations() {
       rejected,
       completed,
       pendingReview: pending + processing,
-      awaitingAction: quoted, // Cotizaciones que esperan respuesta del usuario
+      awaitingAction: quoted,
     };
   };
 
@@ -207,35 +254,26 @@ export function useQuotations() {
   useEffect(() => {
     if (!user) return;
 
-    const subscription = supabase
-      .channel('quotations_changes')
-      .on(
-        'postgres_changes',
-        {
-          event: '*',
-          schema: 'public',
-          table: 'quotations',
-          filter: `user_id=eq.${user.id}`,
-        },
-        (payload) => {
-          if (payload.eventType === 'INSERT') {
-            setQuotations(prev => [payload.new as Quotation, ...prev]);
-          } else if (payload.eventType === 'UPDATE') {
-            setQuotations(prev =>
-              prev.map(q =>
-                q.id === payload.new.id ? { ...q, ...payload.new } : q
-              )
-            );
-          } else if (payload.eventType === 'DELETE') {
-            setQuotations(prev => prev.filter(q => q.id !== payload.old.id));
-          }
-        }
-      )
-      .subscribe();
+    const quotationsRef = collection(db, 'quotations');
+    const q = query(
+      quotationsRef,
+      where('user_id', '==', user.uid),
+      orderBy('created_at', 'desc')
+    );
 
-    return () => {
-      subscription.unsubscribe();
-    };
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const quotationsData = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+        created_at: timestampToString(doc.data().created_at),
+        updated_at: timestampToString(doc.data().updated_at),
+      })) as Quotation[];
+
+      setQuotations(quotationsData);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
   }, [user]);
 
   // Initial fetch
