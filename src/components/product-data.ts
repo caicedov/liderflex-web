@@ -599,6 +599,683 @@ export const proteccion_espiral: Product = {
 };
 
 // ============================================
+// CONEXIONES HIDRÁULICAS - CATÁLOGO COMPLETO
+// ============================================
+
+export const conexiones_hidraulicas: Product[] = [
+  // -------------------------------
+  // JIC
+  // -------------------------------
+  {
+    id: "fjx_recta",
+    name: "Hembra Giratoria JIC (FJX) Recta",
+    category: "Conexiones Hidráulicas",
+    description: "Conexión hembra giratoria recta tipo JIC con asiento a 37° conforme a norma SAE J514.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 2\"",
+      "Hilo": "7/16\" a 2 1/2\" JIC",
+      "Norma": "JIC / SAE J514 Asiento 37°",
+      "Tipo": "Recta"
+    },
+    features: [
+      "Conexión estándar JIC de alta resistencia",
+      "Diseño giratorio que facilita el montaje",
+      "Cumple norma SAE J514",
+      "Apta para sistemas hidráulicos de alta presión"
+    ],
+    applications: [
+      "Sistemas hidráulicos industriales",
+      "Líneas de aceite y fluidos a presión",
+      "Conexiones en maquinaria pesada"
+    ]
+  },
+  {
+    id: "fjx_45",
+    name: "Hembra Giratoria JIC (FJX) 45°",
+    category: "Conexiones Hidráulicas",
+    description: "Conexión hembra giratoria en ángulo de 45° tipo JIC, ideal para espacios reducidos.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 2\"",
+      "Hilo": "7/16\" a 2 1/2\" JIC",
+      "Norma": "JIC / SAE J514 Asiento 37°",
+      "Tipo": "45°"
+    },
+    features: [
+      "Ángulo de 45° para adaptaciones de espacio",
+      "Rosca JIC compatible con sistemas SAE",
+      "Alta durabilidad y resistencia mecánica"
+    ],
+    applications: [
+      "Equipos hidráulicos con geometría compacta",
+      "Maquinaria móvil",
+      "Sistemas de control hidráulico"
+    ]
+  },
+  {
+    id: "fjx_90",
+    name: "Hembra Giratoria JIC (FJX) 90°",
+    category: "Conexiones Hidráulicas",
+    description: "Conexión hembra giratoria en ángulo de 90° JIC para sistemas hidráulicos de mediana y alta presión.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 2\"",
+      "Hilo": "7/16\" a 2 1/2\" JIC",
+      "Norma": "JIC / SAE J514 Asiento 37°",
+      "Tipo": "90°"
+    },
+    features: [
+      "Permite giros cerrados sin comprometer flujo",
+      "Rosca JIC estándar 37°",
+      "Diseño robusto y confiable"
+    ],
+    applications: [
+      "Sistemas hidráulicos con restricciones de espacio",
+      "Maquinaria industrial y minera"
+    ]
+  },
+  {
+    id: "mj_jic",
+    name: "Macho JIC (MJ)",
+    category: "Conexiones Hidráulicas",
+    description: "Conexión macho tipo JIC con asiento 37°, compatible con conexiones hembra JIC y SAE.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 2\"",
+      "Hilo": "7/16\" a 2 1/2\" JIC",
+      "Norma": "JIC / SAE J514 Asiento 37°"
+    },
+    features: [
+      "Rosca JIC precisa para sellado óptimo",
+      "Compatible con estándares SAE",
+      "Fabricación en acero de alta calidad"
+    ],
+    applications: [
+      "Conexión directa a mangueras hidráulicas",
+      "Sistemas de transporte de fluidos a presión"
+    ]
+  },
+
+  // -------------------------------
+  // BSP
+  // -------------------------------
+  {
+    id: "fgx_recta",
+    name: "Hembra Giratoria BSP (FGX) Recta",
+    category: "Conexiones Hidráulicas",
+    description: "Conexión hembra giratoria recta tipo BSP con asiento 30° conforme a norma BSPP.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 2\"",
+      "Hilo": "1/4\" BSP a 2\" BSP",
+      "Norma": "BSPP Asiento 30°",
+      "Tipo": "Recta"
+    },
+    features: [
+      "Rosca BSPP para sellado preciso",
+      "Alta resistencia a la presión",
+      "Ideal para sistemas europeos e industriales"
+    ],
+    applications: [
+      "Equipos hidráulicos con norma BSP",
+      "Sistemas industriales de fluidos"
+    ]
+  },
+  {
+    id: "fgx_45",
+    name: "Hembra Giratoria BSP (FGX) 45°",
+    category: "Conexiones Hidráulicas",
+    description: "Conexión hembra giratoria BSP en ángulo 45°, ideal para trayectorias de fluido en espacios reducidos.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 2\"",
+      "Hilo": "1/4\" BSP a 2\" BSP",
+      "Norma": "BSPP Asiento 30°",
+      "Tipo": "45°"
+    },
+    features: [
+      "Diseño angular versátil",
+      "Fabricada bajo norma BSPP 30°",
+      "Resistente a la vibración y fugas"
+    ],
+    applications: [
+      "Líneas hidráulicas y neumáticas",
+      "Sistemas de maquinaria pesada"
+    ]
+  },
+  {
+    id: "fgx_90",
+    name: "Hembra Giratoria BSP (FGX) 90°",
+    category: "Conexiones Hidráulicas",
+    description: "Conexión hembra giratoria BSP 90° diseñada para instalaciones donde se requiere redirección de flujo.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 2\"",
+      "Hilo": "1/4\" BSP a 2\" BSP",
+      "Norma": "BSPP Asiento 30°",
+      "Tipo": "90°"
+    },
+    features: [
+      "Ángulo 90° para trayectorias cerradas",
+      "Compatibilidad universal BSPP",
+      "Construcción metálica de alta durabilidad"
+    ],
+    applications: [
+      "Líneas hidráulicas de maquinaria pesada",
+      "Sistemas hidráulicos europeos"
+    ]
+  },
+  {
+    id: "mg_bsp",
+    name: "Macho BSP (MG)",
+    category: "Conexiones Hidráulicas",
+    description: "Conexión macho BSP con asiento 30°, compatible con conexiones hembra BSPP.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 2\"",
+      "Hilo": "1/4\" BSP a 2\" BSP",
+      "Norma": "BSPP Asiento 30°"
+    },
+    features: [
+      "Sellado de precisión con asiento 30°",
+      "Acabado resistente a la corrosión",
+      "Alta confiabilidad en sistemas hidráulicos"
+    ],
+    applications: [
+      "Equipos industriales",
+      "Maquinaria agrícola",
+      "Sistemas hidráulicos BSP"
+    ]
+  },
+
+  // -------------------------------
+  // ORFS
+  // -------------------------------
+  {
+    id: "fforx_recta",
+    name: "Hembra Giratoria ORFS (FFORX) Recta",
+    category: "Conexiones Hidráulicas",
+    description: "Conexión ORFS hembra giratoria recta con sello O-Ring, conforme a norma SAE J1453.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 1 1/4\"",
+      "Hilo": "9/16\" a 1 11/16\" ORFS",
+      "Norma": "ORFS / SAE J1453 Asiento Plano",
+      "Tipo": "Recta"
+    },
+    features: [
+      "Sello O-Ring para estanqueidad superior",
+      "Diseño giratorio que facilita el montaje",
+      "Ideal para alta presión y vibración"
+    ],
+    applications: [
+      "Sistemas hidráulicos de precisión",
+      "Maquinaria pesada y agrícola"
+    ]
+  },
+  {
+    id: "fforx_45",
+    name: "Hembra Giratoria ORFS (FFORX) 45°",
+    category: "Conexiones Hidráulicas",
+    description: "Conexión ORFS en ángulo de 45°, con sello plano tipo O-Ring para alta estanqueidad.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 1 1/4\"",
+      "Hilo": "9/16\" a 1 11/16\" ORFS",
+      "Norma": "ORFS / SAE J1453 Asiento Plano",
+      "Tipo": "45°"
+    },
+    features: [
+      "Ángulo 45° para instalaciones con desvío de flujo",
+      "Rosca ORFS con O-Ring integrado",
+      "Alta resistencia a fugas"
+    ],
+    applications: [
+      "Sistemas hidráulicos con pulsaciones",
+      "Ambientes industriales exigentes"
+    ]
+  },
+  {
+    id: "fforx_90",
+    name: "Hembra Giratoria ORFS (FFORX) 90°",
+    category: "Conexiones Hidráulicas",
+    description: "Conexión ORFS en ángulo 90° con sello O-Ring, diseñada para uso en alta presión.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 1 1/4\"",
+      "Hilo": "9/16\" a 1 11/16\" ORFS",
+      "Norma": "ORFS / SAE J1453 Asiento Plano",
+      "Tipo": "90°"
+    },
+    features: [
+      "Sello O-Ring para máxima estanqueidad",
+      "Alta durabilidad y resistencia mecánica",
+      "Cumple SAE J1453"
+    ],
+    applications: [
+      "Sistemas hidráulicos de maquinaria pesada",
+      "Aplicaciones de alta presión"
+    ]
+  },
+  {
+    id: "for_macho",
+    name: "Macho ORFS (FOR)",
+    category: "Conexiones Hidráulicas",
+    description: "Conector macho ORFS con asiento plano y sello O-Ring, conforme a norma SAE J1453.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 1 1/4\"",
+      "Hilo": "9/16\" a 1 11/16\" ORFS",
+      "Norma": "ORFS / SAE J1453 Asiento Plano"
+    },
+    features: [
+      "Diseño robusto para alta presión",
+      "Sello O-Ring que evita fugas",
+      "Compatibilidad total con ORFS hembra"
+    ],
+    applications: [
+      "Líneas hidráulicas industriales",
+      "Sistemas hidráulicos de precisión"
+    ]
+  },
+
+  // -------------------------------
+  // Métricas y DIN (Livianas / Pesadas)
+  // -------------------------------
+  {
+    id: "hml_recta",
+    name: "Hembra Métrica Giratoria S. Liviano (HML) Recta",
+    category: "Conexiones Hidráulicas",
+    description: "Conexión hembra giratoria métrica serie liviana con asiento a 24° conforme a norma DIN.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 1 1/2\"",
+      "Hilo Métrico": "12 a 52 mm",
+      "Norma": "DIN Asiento 24°",
+      "Tipo": "Recta"
+    },
+    features: [
+      "Diseño DIN serie liviana",
+      "Excelente sellado con cono 24°",
+      "Alta resistencia mecánica"
+    ],
+    applications: [
+      "Sistemas hidráulicos industriales",
+      "Maquinaria de precisión"
+    ]
+  },
+  {
+    id: "hml_45",
+    name: "Hembra Métrica Giratoria S. Liviano (HML) 45°",
+    category: "Conexiones Hidráulicas",
+    description: "Conexión métrica giratoria liviana con ángulo de 45°, conforme a norma DIN 24°.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 1 1/2\"",
+      "Hilo Métrico": "12 a 52 mm",
+      "Norma": "DIN Asiento 24°",
+      "Tipo": "45°"
+    },
+    features: [
+      "Ángulo 45° ideal para espacios reducidos",
+      "Diseño liviano, robusto y confiable"
+    ],
+    applications: [
+      "Maquinaria industrial y agrícola",
+      "Sistemas hidráulicos DIN"
+    ]
+  },
+  {
+    id: "hml_90",
+    name: "Hembra Métrica Giratoria S. Liviano (HML) 90°",
+    category: "Conexiones Hidráulicas",
+    description: "Conexión métrica serie liviana 90° con asiento 24° para sistemas hidráulicos DIN.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 1 1/2\"",
+      "Hilo Métrico": "12 a 52 mm",
+      "Norma": "DIN Asiento 24°",
+      "Tipo": "90°"
+    },
+    features: [
+      "Ángulo cerrado 90° para trayectorias compactas",
+      "Cumple especificaciones DIN 24°"
+    ],
+    applications: [
+      "Equipos hidráulicos europeos",
+      "Maquinaria industrial"
+    ]
+  },
+  {
+    id: "mml_macho",
+    name: "Macho Métrico S. Liviano (MML)",
+    category: "Conexiones Hidráulicas",
+    description: "Conexión macho métrica serie liviana con asiento 24°, norma DIN.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 1 1/2\"",
+      "Hilo Métrico": "12 a 52 mm",
+      "Norma": "DIN Asiento 24°"
+    },
+    features: [
+      "Alta precisión de rosca métrica",
+      "Sellado confiable con cono 24°"
+    ],
+    applications: [
+      "Sistemas hidráulicos estándar DIN",
+      "Líneas de aceite y lubricantes"
+    ]
+  },
+  {
+    id: "hmh_recta",
+    name: "Hembra Métrica Giratoria S. Pesado (HMH) Recta",
+    category: "Conexiones Hidráulicas",
+    description: "Conexión métrica hembra giratoria serie pesada con asiento 24°, norma DIN.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 1 1/2\"",
+      "Hilo Métrico": "14 a 52 mm",
+      "Norma": "DIN Asiento 24°",
+      "Tipo": "Recta"
+    },
+    features: [
+      "Serie pesada para alta presión",
+      "Construcción reforzada DIN 24°"
+    ],
+    applications: [
+      "Sistemas hidráulicos de alta carga",
+      "Maquinaria industrial pesada"
+    ]
+  },
+  {
+    id: "hmh_45",
+    name: "Hembra Métrica Giratoria S. Pesado (HMH) 45°",
+    category: "Conexiones Hidráulicas",
+    description: "Conexión métrica serie pesada 45° con asiento 24°, diseñada para altas presiones.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 1 1/2\"",
+      "Hilo Métrico": "14 a 52 mm",
+      "Norma": "DIN Asiento 24°",
+      "Tipo": "45°"
+    },
+    features: [
+      "Ángulo 45° ideal para adaptaciones industriales",
+      "Alta resistencia estructural"
+    ],
+    applications: [
+      "Maquinaria pesada",
+      "Sistemas hidráulicos de alto flujo"
+    ]
+  },
+  {
+    id: "hmh_90",
+    name: "Hembra Métrica Giratoria S. Pesado (HMH) 90°",
+    category: "Conexiones Hidráulicas",
+    description: "Conexión métrica giratoria pesada 90° con norma DIN asiento 24°.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 1 1/2\"",
+      "Hilo Métrico": "14 a 52 mm",
+      "Norma": "DIN Asiento 24°",
+      "Tipo": "90°"
+    },
+    features: [
+      "Diseño angular 90° reforzado",
+      "Cumple norma DIN serie pesada"
+    ],
+    applications: [
+      "Sistemas hidráulicos exigentes",
+      "Equipos de construcción e industria minera"
+    ]
+  },
+  {
+    id: "mmh_macho",
+    name: "Macho Métrico S. Pesado (MMH)",
+    category: "Conexiones Hidráulicas",
+    description: "Conector macho métrico serie pesada, estándar DIN con asiento 24°.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 1 1/2\"",
+      "Hilo Métrico": "14 a 52 mm",
+      "Norma": "DIN Asiento 24°"
+    },
+    features: [
+      "Alta resistencia mecánica",
+      "Diseño estándar DIN 24°"
+    ],
+    applications: [
+      "Maquinaria industrial y de minería",
+      "Sistemas de presión alta"
+    ]
+  },
+
+  // -------------------------------
+  // FLANGES 61 y 62
+  // -------------------------------
+  {
+    id: "fl61_recto",
+    name: "Flange 61 Recto (FL)",
+    category: "Conexiones Hidráulicas",
+    description: "Conector flange recto tipo 61 conforme a norma SAE J518 para 3000 PSI.",
+    specifications: {
+      "Medidas": "Manguera 1/2\" a 2\"",
+      "Flange": "30.2 a 71.4",
+      "Norma": "SAE J518 Cod. 61 3000 PSI",
+      "Tipo": "Recto"
+    },
+    features: [
+      "Diseño SAE J518 3000 PSI",
+      "Alta durabilidad y sellado seguro"
+    ],
+    applications: [
+      "Sistemas hidráulicos de media presión",
+      "Equipos de construcción e industria"
+    ]
+  },
+  {
+    id: "fl61_45",
+    name: "Flange 61 45° (FL)",
+    category: "Conexiones Hidráulicas",
+    description: "Flange tipo 61 con ángulo 45° conforme a SAE J518 3000 PSI.",
+    specifications: {
+      "Medidas": "Manguera 1/2\" a 2\"",
+      "Flange": "30.2 a 71.4",
+      "Norma": "SAE J518 Cod. 61 3000 PSI",
+      "Tipo": "45°"
+    },
+    features: [
+      "Ángulo 45° para trayectorias hidráulicas adaptadas",
+      "Cumple SAE J518"
+    ],
+    applications: [
+      "Sistemas hidráulicos industriales"
+    ]
+  },
+  {
+    id: "fl61_90",
+    name: "Flange 61 90° (FL)",
+    category: "Conexiones Hidráulicas",
+    description: "Conector flange 61 con ángulo 90° SAE J518 3000 PSI.",
+    specifications: {
+      "Medidas": "Manguera 1/2\" a 2\"",
+      "Flange": "30.2 a 71.4",
+      "Norma": "SAE J518 Cod. 61 3000 PSI",
+      "Tipo": "90°"
+    },
+    features: [
+      "Diseño SAE 61 para sistemas hidráulicos",
+      "Alta durabilidad"
+    ],
+    applications: [
+      "Equipos hidráulicos de media presión"
+    ]
+  },
+  {
+    id: "fl62_recto",
+    name: "Flange 62 Recto (FLH)",
+    category: "Conexiones Hidráulicas",
+    description: "Flange 62 recto diseñado para 6000 PSI conforme a SAE J518.",
+    specifications: {
+      "Medidas": "Manguera 3/4\" a 2\"",
+      "Flange": "41.3 a 79.4",
+      "Norma": "SAE J518 Cod. 62 6000 PSI",
+      "Tipo": "Recto"
+    },
+    features: [
+      "Alta resistencia 6000 PSI",
+      "Cumple estándar SAE J518"
+    ],
+    applications: [
+      "Sistemas hidráulicos de alta presión"
+    ]
+  },
+  {
+    id: "fl62_45",
+    name: "Flange 62 45° (FLH)",
+    category: "Conexiones Hidráulicas",
+    description: "Flange 62 con ángulo 45°, presión nominal 6000 PSI.",
+    specifications: {
+      "Medidas": "Manguera 3/4\" a 2\"",
+      "Flange": "41.3 a 79.4",
+      "Norma": "SAE J518 Cod. 62 6000 PSI",
+      "Tipo": "45°"
+    },
+    features: [
+      "Cumple con SAE J518 62",
+      "Ideal para alta presión"
+    ],
+    applications: [
+      "Maquinaria pesada",
+      "Equipos hidráulicos de potencia"
+    ]
+  },
+  {
+    id: "fl62_90",
+    name: "Flange 62 90° (FLH)",
+    category: "Conexiones Hidráulicas",
+    description: "Conexión flange 62 en ángulo 90° conforme a SAE J518 6000 PSI.",
+    specifications: {
+      "Medidas": "Manguera 3/4\" a 2\"",
+      "Flange": "41.3 a 79.4",
+      "Norma": "SAE J518 Cod. 62 6000 PSI",
+      "Tipo": "90°"
+    },
+    features: [
+      "Ángulo 90° reforzado",
+      "Alta presión 6000 PSI"
+    ],
+    applications: [
+      "Sistemas hidráulicos de potencia"
+    ]
+  },
+
+  // -------------------------------
+  // NPT, SAE, KOMATSU, JIS
+  // -------------------------------
+  {
+    id: "mp_npt",
+    name: "Macho NPT (MP)",
+    category: "Conexiones Hidráulicas",
+    description: "Conexión macho NPT con asiento 30°, conforme a norma NPTF.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 2\"",
+      "Hilo": "1/8\" a 2\" NPT",
+      "Norma": "NPTF Asiento 30°"
+    },
+    features: [
+      "Rosca cónica para sellado hermético",
+      "Cumple estándar NPTF",
+      "Alta durabilidad y precisión"
+    ],
+    applications: [
+      "Sistemas hidráulicos y neumáticos",
+      "Conexión de mangueras industriales"
+    ]
+  },
+  {
+    id: "fsx_sae",
+    name: "Hembra Giratoria SAE (FSX)",
+    category: "Conexiones Hidráulicas",
+    description: "Conector hembra giratorio SAE con asiento 45° conforme a norma SAE J512.",
+    specifications: {
+      "Medidas": "Manguera 3/8\"",
+      "Hilo": "5/8\" x 18 SAE",
+      "Norma": "SAE J512 Asiento 45°"
+    },
+    features: [
+      "Rosca SAE 45° estándar",
+      "Alta compatibilidad con sistemas SAE"
+    ],
+    applications: [
+      "Líneas de aceite y refrigerante"
+    ]
+  },
+  {
+    id: "fkx_komatsu",
+    name: "Hembra Giratoria Komatsu (FKX)",
+    category: "Conexiones Hidráulicas",
+    description: "Conector hembra giratorio Komatsu con asiento 30° según estándar Komatsu.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 1\"",
+      "Hilo Métrico": "14 a 33 mm",
+      "Norma": "Komatsu Asiento 30°"
+    },
+    features: [
+      "Diseño estándar Komatsu",
+      "Alta precisión y durabilidad"
+    ],
+    applications: [
+      "Sistemas hidráulicos en maquinaria Komatsu"
+    ]
+  },
+  {
+    id: "fix_jis",
+    name: "Hembra Giratoria JIS (FIX)",
+    category: "Conexiones Hidráulicas",
+    description: "Conector hembra giratorio tipo JIS conforme a norma JIS B0202 con asiento 30°.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 1\"",
+      "Hilo": "1/4\" a 1\" JIS",
+      "Norma": "JIS/B0202 Asiento 30°"
+    },
+    features: [
+      "Rosca JIS precisa y resistente",
+      "Cumple norma japonesa B0202"
+    ],
+    applications: [
+      "Maquinaria japonesa y asiática",
+      "Sistemas hidráulicos de precisión"
+    ]
+  },
+
+  // -------------------------------
+  // HIDROLAVADORA y UNIÓN HIDRÁULICA
+  // -------------------------------
+  {
+    id: "hidrolavadora",
+    name: "Hembra Giratoria Hidrolavadora",
+    category: "Conexiones Hidráulicas",
+    description: "Conexión hembra giratoria con tuerca de ajuste manual y sello O-ring, ideal para hidrolavadoras.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 3/8\"",
+      "Hilo Métrico": "Tubo standard 14 mm",
+      "Norma": "DIN / Tubo con O-ring"
+    },
+    features: [
+      "Tuerca de ajuste manual",
+      "Sellado mediante O-ring",
+      "Apta para altas presiones"
+    ],
+    applications: [
+      "Hidrolavadoras industriales",
+      "Equipos de limpieza a presión"
+    ]
+  },
+  {
+    id: "union_hidraulica",
+    name: "Unión Hidráulica",
+    category: "Conexiones Hidráulicas",
+    description: "Unión hidráulica estándar para interconectar mangueras o tubos hidráulicos.",
+    specifications: {
+      "Medidas": "Manguera 1/4\" a 1\"",
+      "Tipo": "Recta"
+    },
+    features: [
+      "Diseño robusto y resistente",
+      "Fácil montaje y desmontaje",
+      "Alta compatibilidad con distintos estándares"
+    ],
+    applications: [
+      "Conexión de líneas hidráulicas",
+      "Acoples de mantenimiento rápido"
+    ]
+  }
+];
+
+
+// ============================================
 // ARRAY PRINCIPAL DE PRODUCTOS
 // ============================================
 export const products: Product[] = [
@@ -614,7 +1291,8 @@ export const products: Product[] = [
   manguera_acidos,
   manguera_pvc,
   manguera_poliuretano,
-  proteccion_espiral
+  proteccion_espiral,
+  ...conexiones_hidraulicas
 ];
 
 // ============================================
