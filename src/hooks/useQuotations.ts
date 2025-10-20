@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { db } from "@/lib/firebase";
+import { db } from "@/lib/firebase/firebase";
 import {
   collection,
   doc,
@@ -21,7 +21,7 @@ import { useCart } from "@/components/cart-context";
 import {
   generateQuotationNumber,
   timestampToString,
-} from "@/lib/firebase-utils";
+} from "@/lib/firebase/firebase-utils";
 
 export interface Quotation {
   id: string;

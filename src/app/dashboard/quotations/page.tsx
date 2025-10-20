@@ -5,7 +5,7 @@ import { useQuotations } from "@/hooks/useQuotations";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { timestampToString } from "@/lib/firebase-utils";
+import { timestampToString } from "@/lib/firebase/firebase-utils";
 import { useRouter } from "next/navigation";
 
 function getStatusText(status: string): string {
@@ -87,8 +87,7 @@ export default function QuotationsPage() {
                     Cotización #{q.quotation_number}
                   </CardTitle>
                   <p className="text-sm text-gray-500">
-                    {timestampToString(q.created_at)} —{" "}
-                    {q.total_items}{" "}
+                    {timestampToString(q.created_at)} — {q.total_items}{" "}
                     {q.total_items === 1 ? "artículo" : "artículos"}
                   </p>
                 </div>

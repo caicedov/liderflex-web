@@ -1,36 +1,30 @@
-import  { type NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { type NextRequest, NextResponse } from "next/server";
 import { generateQuotePDF } from "@/lib/pdf/quote";
 import type { QuotePayload } from "@/lib/pdf/types";
+import { adminDb } from "@/lib/firebase/firebase-admin";
 
 export async function GET(
   _req: NextRequest,
   context: { params: Promise<{ id: string }> }
 ) {
-  const { id } = await context.params
   try {
-    const quotationId = id
+    const { id } = await context.params;
+    const quotationId = id;
 
-    // Obtener cotización de Firestore
-    const quotationRef = doc(db, "quotations", quotationId);
-    const quotationSnap = await getDoc(quotationRef);
+    // Leer cotización con admin SDK
+    const quotationSnap = await adminDb.collection("quotations").doc(quotationId).get();
 
-    if (!quotationSnap.exists()) {
+    if (!quotationSnap.exists) {
       return NextResponse.json(
         { error: "Cotización no encontrada" },
         { status: 404 }
       );
     }
 
-    const quotationData = quotationSnap.data();
+    const quotationData = quotationSnap.data()!;
+    const profileSnap = await adminDb.collection("profiles").doc(quotationData.user_id).get();
+    const profileData = profileSnap.exists ? profileSnap.data()! : {};
 
-    // Obtener datos del perfil del usuario
-    const profileRef = doc(db, "profiles", quotationData.user_id);
-    const profileSnap = await getDoc(profileRef);
-    const profileData = profileSnap.exists() ? profileSnap.data() : {};
-
-    // Construir payload
     const payload: QuotePayload = {
       quotation_number: quotationData.quotation_number,
       items: quotationData.items || [],
@@ -51,7 +45,6 @@ export async function GET(
     // Generar PDF
     const pdfDoc = generateQuotePDF(payload);
     const pdfBuffer = Buffer.from(pdfDoc.output("arraybuffer"));
-
     const filename = `cotizacion_${payload.quotation_number}.pdf`;
 
     return new NextResponse(pdfBuffer, {
@@ -64,9 +57,6 @@ export async function GET(
     });
   } catch (error: any) {
     console.error("Error generando PDF:", error);
-    return NextResponse.json(
-      { error: "Error al generar PDF" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: error.message || "Error interno" }, { status: 500 });
   }
 }

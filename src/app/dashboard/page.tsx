@@ -21,9 +21,9 @@ import {
   Package,
   Download,
 } from "lucide-react";
-import { db } from "@/lib/firebase";
+import { db } from "@/lib/firebase/firebase";
 import { collection, query, where, orderBy, getDocs } from "firebase/firestore";
-import { timestampToString } from "@/lib/firebase-utils";
+import { timestampToString } from "@/lib/firebase/firebase-utils";
 
 interface DashboardStats {
   totalQuotations: number;

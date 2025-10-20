@@ -1,17 +1,5 @@
 import { db } from "./firebase";
-import {
-  collection,
-  doc,
-  setDoc,
-  getDoc,
-  getDocs,
-  query,
-  where,
-  orderBy,
-  limit,
-  Timestamp,
-  serverTimestamp,
-} from "firebase/firestore";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 
 // Generar número de cotización
 export async function generateQuotationNumber(): Promise<string> {
