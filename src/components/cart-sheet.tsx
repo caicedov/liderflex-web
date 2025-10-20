@@ -8,9 +8,14 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { Minus, Plus, Trash2 } from "lucide-react";
-import { useCart } from "@/components/cart-context";
-import Image from "next/image";
 import { useState } from "react";
+import { useAuth } from "@/contexts/auth-context";
+import { useCart } from "@/components/cart-context";
+import { useQuotations } from "@/hooks/useQuotations";
+import AuthModal from "@/components/auth/auth-modal";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import Image from "next/image";
 
 interface CartSheetProps {
   isOpen: boolean;
@@ -18,8 +23,12 @@ interface CartSheetProps {
 }
 
 export default function CartSheet({ isOpen, onClose }: CartSheetProps) {
+  const { user } = useAuth();
   const { state, dispatch } = useCart();
+  const { createQuotation } = useQuotations();
   const [sending, setSending] = useState(false);
+  const [notes, setNotes] = useState('');
+  const [showAuthModal, setShowAuthModal] = useState(false);
 
   const updateQuantity = (id: string, quantity: number) =>
     dispatch({ type: "UPDATE_QUANTITY", payload: { id, quantity } });
@@ -28,20 +37,27 @@ export default function CartSheet({ isOpen, onClose }: CartSheetProps) {
     dispatch({ type: "REMOVE_ITEM", payload: id });
 
   const sendQuotation = async () => {
+    if (!user) {
+      setShowAuthModal(true);
+      return;
+    }
+
     try {
       setSending(true);
-      const payload = { items: state.items };
-
-      const res = await fetch("/api/send-quotation", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+      const { data, error } = await createQuotation({
+        items: state.items,
+        notes: notes.trim() || undefined,
       });
 
-      if (!res.ok) throw new Error("Error al enviar cotización.");
+      if (error) {
+        throw new Error(error);
+      }
 
+      // Mostrar mensaje de éxito
       alert("✅ Tu solicitud de cotización se ha enviado correctamente.");
-      dispatch({ type: "CLEAR_CART" });
+      
+      // Limpiar formulario y cerrar
+      setNotes('');
       onClose();
     } catch (err: any) {
       alert(err.message || "No se pudo enviar la cotización.");
@@ -112,21 +128,52 @@ export default function CartSheet({ isOpen, onClose }: CartSheetProps) {
           </div>
 
           {state.items.length > 0 && (
-            <div className="border-t pt-4 space-y-2">
-              <Button
-                className="w-full bg-yellow-400 hover:bg-yellow-500 text-black"
-                onClick={sendQuotation}
-                disabled={sending}
-              >
-                {sending ? "Enviando..." : "Enviar Cotización"}
-              </Button>
-              <Button variant="outline" className="w-full" onClick={onClose}>
-                Continuar Cotizando
-              </Button>
+            <div className="border-t pt-4 space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="quotation-notes" className="text-sm font-medium">
+                  Notas adicionales (opcional)
+                </Label>
+                <Textarea
+                  id="quotation-notes"
+                  value={notes}
+                  onChange={(e) => setNotes(e.target.value)}
+                  placeholder="Describe cualquier requerimiento especial, cantidades específicas, o información adicional..."
+                  className="min-h-[80px] resize-none"
+                  maxLength={500}
+                />
+                <div className="text-xs text-gray-500 text-right">
+                  {notes.length}/500 caracteres
+                </div>
+              </div>
+              
+              <div className="space-y-2">
+                <Button
+                  className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold"
+                  onClick={sendQuotation}
+                  disabled={sending}
+                >
+                  {sending ? "Enviando..." : user ? "Enviar Cotización" : "Iniciar Sesión para Cotizar"}
+                </Button>
+                <Button variant="outline" className="w-full" onClick={onClose}>
+                  Continuar Cotizando
+                </Button>
+                
+                {!user && (
+                  <p className="text-xs text-gray-500 text-center">
+                    Necesitas una cuenta para enviar solicitudes de cotización
+                  </p>
+                )}
+              </div>
             </div>
           )}
         </div>
       </SheetContent>
+      
+      <AuthModal 
+        isOpen={showAuthModal} 
+        onClose={() => setShowAuthModal(false)}
+        defaultTab="register"
+      />
     </Sheet>
   );
 }

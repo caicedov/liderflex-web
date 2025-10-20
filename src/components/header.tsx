@@ -4,18 +4,30 @@ import { useMemo, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Search, ShoppingCart, Phone, User, Heart } from "lucide-react";
+import { Search, ShoppingCart, Phone, User, Heart, LogOut, Settings, Bell } from "lucide-react";
 import { useCart } from "@/components/cart-context";
+import { useAuth } from "@/contexts/auth-context";
+import AuthModal from "@/components/auth/auth-modal";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
 import Image from "next/image";
 import CartSheet from "@/components/cart-sheet";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { products } from "./product-data";
 
 export default function Header() {
   const pathname = usePathname();
+  const router = useRouter();
+  const { user, profile, signOut } = useAuth();
   const { state } = useCart();
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [category, setCategory] = useState<string>("all");
 
@@ -102,13 +114,52 @@ export default function Header() {
                   </div>
                 </a>
 
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="text-white hover:text-yellow-400"
-                >
-                  <User className="w-5 h-5" />
-                </Button>
+                {user ? (
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="text-white hover:text-yellow-400 relative"
+                      >
+                        <User className="w-5 h-5" />
+                        <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-obsidian-900"></div>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end" className="w-56">
+                      <div className="px-3 py-2 border-b">
+                        <p className="font-medium">{profile?.full_name || 'Usuario'}</p>
+                        <p className="text-sm text-gray-500">{profile?.email}</p>
+                      </div>
+                      <DropdownMenuItem onClick={() => router.push('/dashboard')}>
+                        <Settings className="mr-2 h-4 w-4" />
+                        Dashboard
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => router.push('/dashboard/profile')}>
+                        <User className="mr-2 h-4 w-4" />
+                        Mi Perfil
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => router.push('/dashboard/quotations')}>
+                        <ShoppingCart className="mr-2 h-4 w-4" />
+                        Mis Cotizaciones
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem onClick={signOut}>
+                        <LogOut className="mr-2 h-4 w-4" />
+                        Cerrar Sesión
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                ) : (
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="text-white hover:text-yellow-400"
+                    onClick={() => setIsAuthOpen(true)}
+                  >
+                    <User className="w-5 h-5" />
+                  </Button>
+                )}
 
                 <Button
                   variant="ghost"
@@ -185,6 +236,7 @@ export default function Header() {
       )}
 
       <CartSheet isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+      <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
     </>
   );
 }

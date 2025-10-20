@@ -113,7 +113,7 @@ export default function FeaturedDetailPage({ params }: { params: { id: string } 
 
             {/* Texto derecho con logo detrás */}
             <div className="lg:col-span-6 flex flex-col justify-center relative z-10">
-              <h2 className="whitespace-pre-wrap text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-wider text-neutral-900">
+              <h2 className="whitespace-pre-wrap text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-wider text-neutral-900 py-5">
                 {detail.mainTitle}
               </h2>
               <p className="mt-8 text-neutral-700 leading-relaxed text-base sm:text-lg">

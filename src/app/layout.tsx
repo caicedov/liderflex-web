@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import WhatsAppChatModal from "@/components/whatsapp-chat-modal";
 import { CartProvider } from "@/components/cart-context";
+import { AuthProvider } from "@/contexts/auth-context";
 import Footer from "@/components/footer";
 
 const geistSans = Geist({
@@ -36,16 +37,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <CartProvider>
-          {/* Sticky Header (Topbar + Nav) for all pages */}
-          <div className="sticky top-0 z-50 shadow-lg">
-            <Header />
-          </div>
-          {children}
-          {/* WhatsApp Chat Modal floating button */}
-          <WhatsAppChatModal />
-          <Footer />
-        </CartProvider>
+        <AuthProvider>
+          <CartProvider>
+            {/* Sticky Header (Topbar + Nav) for all pages */}
+            <div className="sticky top-0 z-50 shadow-lg">
+              <Header />
+            </div>
+            {children}
+            {/* WhatsApp Chat Modal floating button */}
+            <WhatsAppChatModal />
+            <Footer />
+          </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );
