@@ -1,223 +1,191 @@
-import PDFDocument from "pdfkit";
-import { formatCurrencyCLP, formatDate, makeQuoteNumber } from "../format";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 import type { QuotePayload } from "./types";
 
-// Puedes ajustar estos datos de tu empresa
 const company = {
   name: "Liderflex Hidráulica",
-  rut: "76.123.456-7", // si aplica
+  rut: "76.123.456-7",
   address: "Av. Industrial 1234, Antofagasta",
-  phone: "+56 55 123 4567",
+  phone: "+56 9 5949 7551",
   email: "ventas@liderflex.cl",
   website: "www.liderflex.cl",
-  logoColor: "/public/logo-color.png", // si tienes estos assets en public
-  logoWhite: "/public/logo-white.png",
 };
 
-export async function generateQuotePdfBuffer(
-  payload: QuotePayload,
-): Promise<Buffer> {
-  const doc = new PDFDocument({ size: "A4", margin: 40 });
-  const chunks: Uint8Array[] = [];
-
-  // Recolecta el stream en Buffer
-  return await new Promise<Buffer>((resolve, reject) => {
-    doc.on("data", (c) => chunks.push(c));
-    doc.on("end", () => resolve(Buffer.concat(chunks)));
-    doc.on("error", reject);
-
-    // Encabezado
-    const quoteNumber = makeQuoteNumber();
-    const today = formatDate();
-
-    // Logo (opcional, si existe en public)
-    try {
-      // pdfkit no resuelve rutas Next por defecto. Usa path absoluta si estás en server.
-      // O comenta estas líneas si no tienes logo físico.
-      // doc.image(company.logoColor, 40, 40, { width: 120 });
-    } catch {}
-
-    doc
-      .fontSize(18)
-      .fillColor("#111827")
-      .text(company.name, 40, 40, { continued: false });
-
-    doc
-      .fontSize(9)
-      .fillColor("#374151")
-      .text(`RUT: ${company.rut}`)
-      .text(company.address)
-      .text(`Tel: ${company.phone}`)
-      .text(company.email)
-      .text(company.website);
-
-    // Bloque de cotización
-    doc
-      .fontSize(20)
-      .fillColor("#111827")
-      .text("COTIZACIÓN", { align: "right" });
-
-    doc
-      .fontSize(10)
-      .fillColor("#374151")
-      .text(`N°: ${quoteNumber}`, { align: "right" })
-      .text(`Fecha: ${today}`, { align: "right" });
-
-    doc.moveDown(1.2);
-
-    // Datos cliente
-    const c = payload.customer || {};
-    doc
-      .fontSize(12)
-      .fillColor("#111827")
-      .text("Datos del Cliente", { underline: true });
-
-    doc
-      .fontSize(10)
-      .fillColor("#374151")
-      .text(`Nombre: ${c.name || "-"}`)
-      .text(`RUT: ${c.rut || "-"}`)
-      .text(`Email: ${c.email || "-"}`)
-      .text(`Teléfono: ${c.phone || "-"}`)
-      .text(`Dirección: ${c.address || "-"}`)
-      .text(`Ciudad: ${c.city || "-"}`);
-
-    doc.moveDown(1.2);
-
-    // Tabla productos
-    const startY = doc.y;
-    const tableX = 40;
-    const tableWidth = doc.page.width - 80;
-
-    const headers = ["Código", "Producto", "Cantidad", "Precio", "Subtotal"];
-    const colWidths = [90, tableWidth - (90 + 80 + 80 + 90), 80, 80, 90];
-
-    // Header row
-    drawTableRow(doc, tableX, startY, colWidths, headers, true);
-
-    let y = startY + 24;
-
-    // Items
-    const items = payload.items || [];
-    let total = 0;
-
-    items.forEach((item, idx) => {
-      const code = item.id.split("-").slice(1).join("-") || item.id; // ejemplo: usa sufijo como "sizeCode"
-      const subtotal = item.price * item.quantity;
-      total += subtotal;
-
-      const row = [
-        code,
-        item.name,
-        String(item.quantity),
-        formatCurrencyCLP(item.price),
-        formatCurrencyCLP(subtotal),
-      ];
-      y = drawTableRow(doc, tableX, y, colWidths, row, false, idx % 2 === 0);
-    });
-
-    // Totales
-    doc
-      .moveTo(tableX, y)
-      .lineTo(tableX + tableWidth, y)
-      .strokeColor("#e5e7eb")
-      .stroke();
-
-    y += 10;
-    doc
-      .fontSize(11)
-      .fillColor("#111827")
-      .text("Total", tableX + tableWidth - 90, y, {
-        width: 90,
-        align: "right",
-      });
-    doc
-      .fontSize(12)
-      .fillColor("#b45309")
-      .text(formatCurrencyCLP(total), tableX + tableWidth - 90, y + 16, {
-        width: 90,
-        align: "right",
-      });
-
-    y += 46;
-
-    // Notas
-    if (payload.notes) {
-      doc.moveDown(1);
-      doc.fontSize(12).fillColor("#111827").text("Notas", { underline: true });
-      doc
-        .fontSize(10)
-        .fillColor("#374151")
-        .text(payload.notes, { align: "left" });
-    } else {
-      doc.moveDown(1);
-      doc
-        .fontSize(9)
-        .fillColor("#6b7280")
-        .text(
-          "Precios referenciales, sujetos a stock y confirmación. Validez de la cotización: 7 días. Entrega sujeta a coordinación.",
-          { align: "left" },
-        );
-    }
-
-    // Pie
-    doc.moveDown(1.5);
-    doc
-      .fontSize(9)
-      .fillColor("#9ca3af")
-      .text(
-        `${company.name} • ${company.address} • Tel: ${company.phone} • ${company.email}`,
-        { align: "center" },
-      );
-
-    doc.end();
+export function generateQuotePDF(payload: QuotePayload): jsPDF {
+  const doc = new jsPDF({
+    orientation: "portrait",
+    unit: "mm",
+    format: "a4",
   });
-}
 
-function drawTableRow(
-  doc: PDFKit.PDFDocument,
-  x: number,
-  y: number,
-  widths: number[],
-  cells: (string | number)[],
-  header = false,
-  zebra = false,
-) {
-  const height = 24;
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const margin = 15;
 
-  // Zebra background
-  if (!header && zebra) {
-    doc
-      .rect(
-        x,
-        y,
-        widths.reduce((a, b) => a + b, 0),
-        height,
-      )
-      .fill("#f9fafb")
-      .fillColor("#111827");
+  // ============================================
+  // ENCABEZADO
+  // ============================================
+  doc.setFillColor(17, 24, 39); // obsidian-900
+  doc.rect(0, 0, pageWidth, 45, "F");
+
+  // Logo y nombre empresa (blanco)
+  doc.setTextColor(255, 255, 255);
+  doc.setFontSize(22);
+  doc.setFont("helvetica", "bold");
+  doc.text(company.name, margin, 15);
+
+  doc.setFontSize(9);
+  doc.setFont("helvetica", "normal");
+  doc.text(`RUT: ${company.rut}`, margin, 22);
+  doc.text(company.address, margin, 27);
+  doc.text(`Tel: ${company.phone} | ${company.email}`, margin, 32);
+  doc.text(company.website, margin, 37);
+
+  // Número de cotización (derecha)
+  doc.setFontSize(18);
+  doc.setFont("helvetica", "bold");
+  doc.text("COTIZACIÓN", pageWidth - margin, 15, { align: "right" });
+
+  doc.setFontSize(10);
+  doc.setFont("helvetica", "normal");
+  doc.text(`N°: ${payload.quotation_number}`, pageWidth - margin, 22, {
+    align: "right",
+  });
+  doc.text(
+    `Fecha: ${payload.created_at ? new Date(payload.created_at).toLocaleDateString("es-CL") : new Date().toLocaleDateString("es-CL")}`,
+    pageWidth - margin,
+    27,
+    { align: "right" }
+  );
+  doc.text(`Estado: ${getStatusText(payload.status || "pending")}`, pageWidth - margin, 32, {
+    align: "right",
+  });
+
+  // ============================================
+  // DATOS DEL CLIENTE
+  // ============================================
+  let yPos = 55;
+  doc.setTextColor(17, 24, 39);
+  doc.setFontSize(12);
+  doc.setFont("helvetica", "bold");
+  doc.text("Datos del Cliente", margin, yPos);
+
+  yPos += 7;
+  doc.setFontSize(10);
+  doc.setFont("helvetica", "normal");
+
+  const customer = payload.customer || {};
+  const clientData = [
+    `Nombre: ${customer.full_name || "-"}`,
+    `Empresa: ${customer.company_name || "-"}`,
+    `RUT: ${customer.rut || "-"}`,
+    `Email: ${customer.email || "-"}`,
+    `Teléfono: ${customer.phone || "-"}`,
+    `Dirección: ${customer.address || "-"}`,
+    `Ciudad: ${customer.city || "-"}`,
+  ];
+
+  clientData.forEach((line) => {
+    doc.text(line, margin, yPos);
+    yPos += 5;
+  });
+
+  yPos += 5;
+
+  // ============================================
+  // TABLA DE PRODUCTOS
+  // ============================================
+  const tableData = payload.items.map((item, idx) => [
+    String(idx + 1),
+    item.sizeCode || item.id,
+    item.name,
+    item.size || "-",
+    String(item.quantity),
+  ]);
+
+  autoTable(doc, {
+    startY: yPos,
+    head: [["#", "Código", "Producto", "Medida", "Cantidad"]],
+    body: tableData,
+    theme: "striped",
+    headStyles: {
+      fillColor: [251, 191, 36], // yellow-400
+      textColor: [17, 24, 39], // obsidian-900
+      fontStyle: "bold",
+      fontSize: 10,
+    },
+    bodyStyles: {
+      fontSize: 9,
+      textColor: [55, 65, 81],
+    },
+    alternateRowStyles: {
+      fillColor: [249, 250, 251],
+    },
+    margin: { left: margin, right: margin },
+    columnStyles: {
+      0: { cellWidth: 10, halign: "center" },
+      1: { cellWidth: 30 },
+      2: { cellWidth: 80 },
+      3: { cellWidth: 25, halign: "center" },
+      4: { cellWidth: 25, halign: "center" },
+    },
+  });
+
+  // @ts-ignore
+  yPos = doc.lastAutoTable.finalY + 10;
+
+  // ============================================
+  // NOTAS
+  // ============================================
+  if (payload.notes) {
+    doc.setFontSize(11);
+    doc.setFont("helvetica", "bold");
+    doc.text("Notas Adicionales:", margin, yPos);
+    yPos += 6;
+
+    doc.setFontSize(9);
+    doc.setFont("helvetica", "normal");
+    const splitNotes = doc.splitTextToSize(payload.notes, pageWidth - 2 * margin);
+    doc.text(splitNotes, margin, yPos);
+    yPos += splitNotes.length * 5 + 5;
   }
 
-  // Borders bottom
-  doc
-    .moveTo(x, y + height)
-    .lineTo(x + widths.reduce((a, b) => a + b, 0), y + height)
-    .strokeColor("#e5e7eb")
-    .stroke();
+  // ============================================
+  // CONDICIONES
+  // ============================================
+  yPos += 5;
+  doc.setFontSize(8);
+  doc.setTextColor(107, 114, 128);
+  doc.setFont("helvetica", "italic");
+  const conditions = doc.splitTextToSize(
+    "Precios referenciales, sujetos a stock y confirmación. Validez de la cotización: 7 días. Entrega sujeta a coordinación.",
+    pageWidth - 2 * margin
+  );
+  doc.text(conditions, margin, yPos);
 
-  let cursorX = x;
-  cells.forEach((cell, i) => {
-    const isNumeric = i >= cells.length - 2 || i === 2;
-    doc
-      .font(header ? "Helvetica-Bold" : "Helvetica")
-      .fontSize(header ? 10 : 9)
-      .fillColor(header ? "#111827" : "#374151")
-      .text(String(cell), cursorX + 6, y + 6, {
-        width: widths[i] - 12,
-        align: isNumeric ? "right" : "left",
-      });
-    cursorX += widths[i];
-  });
+  // ============================================
+  // PIE DE PÁGINA
+  // ============================================
+  const pageHeight = doc.internal.pageSize.getHeight();
+  doc.setFontSize(8);
+  doc.setTextColor(156, 163, 175);
+  doc.text(
+    `${company.name} • ${company.address} • Tel: ${company.phone} • ${company.email}`,
+    pageWidth / 2,
+    pageHeight - 10,
+    { align: "center" }
+  );
 
-  return y + height;
+  return doc;
+}
+
+function getStatusText(status: string): string {
+  const statusMap: Record<string, string> = {
+    pending: "Pendiente",
+    processing: "Procesando",
+    quoted: "Cotizada",
+    approved: "Aprobada",
+    rejected: "Rechazada",
+    completed: "Completada",
+  };
+  return statusMap[status] || status;
 }

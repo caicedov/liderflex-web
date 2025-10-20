@@ -1,21 +1,25 @@
-export type CartItemPayload = {
+export interface CartItemPayload {
   id: string;
   name: string;
-  price: number;
-  quantity: number;
   image?: string;
-  sizeCode?: string; // opcional, por si estás usando códigos de medidas
-};
+  quantity: number;
+  sizeCode?: string;
+  size?: string;
+}
 
-export type QuotePayload = {
+export interface QuotePayload {
+  quotation_number: string;
   items: CartItemPayload[];
   customer?: {
-    name?: string;
-    rut?: string;        // si aplica
+    full_name?: string;
+    company_name?: string;
+    rut?: string;
     email?: string;
     phone?: string;
     address?: string;
     city?: string;
   };
   notes?: string;
-};
+  status?: string;
+  created_at?: string;
+}
