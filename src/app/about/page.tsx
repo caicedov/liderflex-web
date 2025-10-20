@@ -264,13 +264,13 @@ export default function AboutPage() {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div>
-                <div className="text-4xl font-bold text-black mb-2">X+</div>
+                <div className="text-4xl font-bold text-black mb-2">5+</div>
                 <div className="text-black font-semibold">
                   Años de Experiencia
                 </div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-black mb-2">50+</div>
+                <div className="text-4xl font-bold text-black mb-2">1000+</div>
                 <div className="text-black font-semibold">
                   Clientes Satisfechos
                 </div>

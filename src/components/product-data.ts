@@ -622,7 +622,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conexión hembra giratoria en ángulo de 45° tipo JIC, ideal para espacios reducidos.",
-    images: ["/h-jic-fjx-45.png?height=400&width=400"],
+    images: ["/conexiones/h-jic-fjx-45.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 2"',
       Hilo: '7/16" a 2 1/2" JIC',
@@ -646,7 +646,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conexión hembra giratoria en ángulo de 90° JIC para sistemas hidráulicos de mediana y alta presión.",
-    images: ["/h-jic-fjx-90.png?height=400&width=400"],
+    images: ["/conexiones/h-jic-fjx-90.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 2"',
       Hilo: '7/16" a 2 1/2" JIC',
@@ -669,7 +669,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conexión macho tipo JIC con asiento 37°, compatible con conexiones hembra JIC y SAE.",
-    images: ["/m-jic-mj.png?height=400&width=400"],
+    images: ["/conexiones/m-jic-mj.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 2"',
       Hilo: '7/16" a 2 1/2" JIC',
@@ -695,7 +695,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conexión hembra giratoria recta tipo BSP con asiento 30° conforme a norma BSPP.",
-    images: ["/h-bsp-fgx-recta.png?height=400&width=400"],
+    images: ["/conexiones/h-bsp-fgx-recta.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 2"',
       Hilo: '1/4" BSP a 2" BSP',
@@ -718,7 +718,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conexión hembra giratoria BSP en ángulo 45°, ideal para trayectorias de fluido en espacios reducidos.",
-    images: ["/h-bsp-fgx-45.png?height=400&width=400"],
+    images: ["/conexiones/h-bsp-fgx-45.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 2"',
       Hilo: '1/4" BSP a 2" BSP',
@@ -741,7 +741,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conexión hembra giratoria BSP 90° diseñada para instalaciones donde se requiere redirección de flujo.",
-    images: ["/h-bsp-fgx-90.png?height=400&width=400"],
+    images: ["/conexiones/h-bsp-fgx-90.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 2"',
       Hilo: '1/4" BSP a 2" BSP',
@@ -764,7 +764,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conexión macho BSP con asiento 30°, compatible con conexiones hembra BSPP.",
-    images: ["/m-bsp-mg.png?height=400&width=400"],
+    images: ["/conexiones/m-bsp-mg.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 2"',
       Hilo: '1/4" BSP a 2" BSP',
@@ -791,7 +791,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conexión ORFS hembra giratoria recta con sello O-Ring, conforme a norma SAE J1453.",
-    images: ["/h-orfs-fforx-recta.png?height=400&width=400"],
+    images: ["/conexiones/h-orfs-fforx-recta.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 1 1/4"',
       Hilo: '9/16" a 1 11/16" ORFS',
@@ -814,7 +814,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conexión ORFS en ángulo de 45°, con sello plano tipo O-Ring para alta estanqueidad.",
-    images: ["/h-orfs-fforx-45.png?height=400&width=400"],
+    images: ["/conexiones/h-orfs-fforx-45.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 1 1/4"',
       Hilo: '9/16" a 1 11/16" ORFS',
@@ -837,7 +837,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conexión ORFS en ángulo 90° con sello O-Ring, diseñada para uso en alta presión.",
-    images: ["/h-orfs-fforx-90.png?height=400&width=400"],
+    images: ["/conexiones/h-orfs-fforx-90.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 1 1/4"',
       Hilo: '9/16" a 1 11/16" ORFS',
@@ -860,7 +860,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conector macho ORFS con asiento plano y sello O-Ring, conforme a norma SAE J1453.",
-    images: ["/m-orfs-for.png?height=400&width=400"],
+    images: ["/conexiones/m-orfs-for.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 1 1/4"',
       Hilo: '9/16" a 1 11/16" ORFS',
@@ -886,7 +886,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conexión hembra giratoria métrica serie liviana con asiento a 24° conforme a norma DIN.",
-    images: ["/h-liviano-hml.png?height=400&width=400"],
+    images: ["/conexiones/h-liviano-hml.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 1 1/2"',
       "Hilo Métrico": "12 a 52 mm",
@@ -909,7 +909,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conexión métrica giratoria liviana con ángulo de 45°, conforme a norma DIN 24°.",
-    images: ["/h-liviano-hml-45.png?height=400&width=400"],
+    images: ["/conexiones/h-liviano-hml-45.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 1 1/2"',
       "Hilo Métrico": "12 a 52 mm",
@@ -931,7 +931,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conexión métrica serie liviana 90° con asiento 24° para sistemas hidráulicos DIN.",
-    images: ["/h-liviano-hml-90.png?height=400&width=400"],
+    images: ["/conexiones/h-liviano-hml-90.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 1 1/2"',
       "Hilo Métrico": "12 a 52 mm",
@@ -950,7 +950,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conexión macho métrica serie liviana con asiento 24°, norma DIN.",
-    images: ["/m-liviano-mml.png?height=400&width=400"],
+    images: ["/conexiones/m-liviano-mml.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 1 1/2"',
       "Hilo Métrico": "12 a 52 mm",
@@ -971,7 +971,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conexión métrica hembra giratoria serie pesada con asiento 24°, norma DIN.",
-    images: ["/h-pesado-hml.png?height=400&width=400"],
+    images: ["/conexiones/h-pesado-hml.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 1 1/2"',
       "Hilo Métrico": "14 a 52 mm",
@@ -993,7 +993,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conexión métrica serie pesada 45° con asiento 24°, diseñada para altas presiones.",
-    images: ["/h-pesado-hml-45.png?height=400&width=400"],
+    images: ["/conexiones/h-pesado-hml-45.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 1 1/2"',
       "Hilo Métrico": "14 a 52 mm",
@@ -1012,7 +1012,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conexión métrica giratoria pesada 90° con norma DIN asiento 24°.",
-    images: ["/h-pesado-hml-90.png?height=400&width=400"],
+    images: ["/conexiones/h-pesado-hml-90.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 1 1/2"',
       "Hilo Métrico": "14 a 52 mm",
@@ -1031,7 +1031,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conector macho métrico serie pesada, estándar DIN con asiento 24°.",
-    images: ["/m-pesado-mmh.png?height=400&width=400"],
+    images: ["/conexiones/m-pesado-mmh.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 1 1/2"',
       "Hilo Métrico": "14 a 52 mm",
@@ -1053,7 +1053,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conector flange recto tipo 61 conforme a norma SAE J518 para 3000 PSI.",
-    images: ["/fl-61-recto-fl.png?height=400&width=400"],
+    images: ["/conexiones/fl-61-recto-fl.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/2" a 2"',
       Flange: "30.2 a 71.4",
@@ -1071,7 +1071,7 @@ export const conexiones_hidraulicas: Product[] = [
     name: "Flange 61 45° (FL)",
     category: "Conexiones Hidráulicas",
     description: "Flange tipo 61 con ángulo 45° conforme a SAE J518 3000 PSI.",
-    images: ["/fl-61-45-fl.png?height=400&width=400"],
+    images: ["/conexiones/fl-61-45-fl.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/2" a 2"',
       Flange: "30.2 a 71.4",
@@ -1089,7 +1089,7 @@ export const conexiones_hidraulicas: Product[] = [
     name: "Flange 61 90° (FL)",
     category: "Conexiones Hidráulicas",
     description: "Conector flange 61 con ángulo 90° SAE J518 3000 PSI.",
-    images: ["/fl-61-90-fl.png?height=400&width=400"],
+    images: ["/conexiones/fl-61-90-fl.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/2" a 2"',
       Flange: "30.2 a 71.4",
@@ -1104,7 +1104,7 @@ export const conexiones_hidraulicas: Product[] = [
     name: "Flange 62 Recto (FLH)",
     category: "Conexiones Hidráulicas",
     description: "Flange 62 recto diseñado para 6000 PSI conforme a SAE J518.",
-    images: ["/fl-62-recto-flh.png?height=400&width=400"],
+    images: ["/conexiones/fl-62-recto-flh.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 3/4" a 2"',
       Flange: "41.3 a 79.4",
@@ -1119,7 +1119,7 @@ export const conexiones_hidraulicas: Product[] = [
     name: "Flange 62 45° (FLH)",
     category: "Conexiones Hidráulicas",
     description: "Flange 62 con ángulo 45°, presión nominal 6000 PSI.",
-    images: ["/fl-62-45-flh.png?height=400&width=400"],
+    images: ["/conexiones/fl-62-45-flh.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 3/4" a 2"',
       Flange: "41.3 a 79.4",
@@ -1135,7 +1135,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conexión flange 62 en ángulo 90° conforme a SAE J518 6000 PSI.",
-    images: ["/fl-62-90-flh.png?height=400&width=400"],
+    images: ["/conexiones/fl-62-90-flh.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 3/4" a 2"',
       Flange: "41.3 a 79.4",
@@ -1154,7 +1154,7 @@ export const conexiones_hidraulicas: Product[] = [
     name: "Macho NPT (MP)",
     category: "Conexiones Hidráulicas",
     description: "Conexión macho NPT con asiento 30°, conforme a norma NPTF.",
-    images: ["/m-ntp-mp.png?height=400&width=400"],
+    images: ["/conexiones/m-ntp-mp.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 2"',
       Hilo: '1/8" a 2" NPT',
@@ -1176,7 +1176,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conector hembra giratorio SAE con asiento 45° conforme a norma SAE J512.",
-    images: ["/h-sae-fsx.png?height=400&width=400"],
+    images: ["/conexiones/h-sae-fsx.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 3/8"',
       Hilo: '5/8" x 18 SAE',
@@ -1194,7 +1194,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conector hembra giratorio Komatsu con asiento 30° según estándar Komatsu.",
-    images: ["/h-kom-fkx.png?height=400&width=400"],
+    images: ["/conexiones/h-kom-fkx.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 1"',
       "Hilo Métrico": "14 a 33 mm",
@@ -1209,7 +1209,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conector hembra giratorio tipo JIS conforme a norma JIS B0202 con asiento 30°.",
-    images: ["/h-jis-fix.png?height=400&width=400"],
+    images: ["/conexiones/h-jis-fix.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 1"',
       Hilo: '1/4" a 1" JIS',
@@ -1231,7 +1231,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conexión hembra giratoria con tuerca de ajuste manual y sello O-ring, ideal para hidrolavadoras.",
-    images: ["/h-hidro.png?height=400&width=400"],
+    images: ["/conexiones/h-hidro.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 3/8"',
       "Hilo Métrico": "Tubo standard 14 mm",
@@ -1253,7 +1253,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Unión hidráulica estándar para interconectar mangueras o tubos hidráulicos.",
-    images: ["/union-hidra.png?height=400&width=400"],
+    images: ["/conexiones/union-hidra.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 1"',
       Tipo: "Recta",

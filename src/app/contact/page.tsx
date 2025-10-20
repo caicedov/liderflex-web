@@ -30,7 +30,6 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Formulario enviado:", formData);
     // Handle form submission
     alert("¡Gracias por tu mensaje! Te contactaremos pronto.");
     setFormData({

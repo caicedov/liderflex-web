@@ -12,7 +12,7 @@ export default function CompanyHero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="text-white">
             <div className="inline-block bg-yellow-400 text-black px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              🏆 X+ Años de Excelencia
+              🏆 5+ Años de Excelencia
             </div>
 
             <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight">
@@ -45,7 +45,7 @@ export default function CompanyHero() {
             <div className="grid grid-cols-3 gap-8">
               <div className="text-center">
                 <div className="text-3xl font-bold text-yellow-400 mb-1">
-                  5000+
+                  1000+
                 </div>
                 <div className="text-sm text-gray-300">
                   Clientes Satisfechos
@@ -53,7 +53,7 @@ export default function CompanyHero() {
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-yellow-400 mb-1">
-                  X+
+                  5+
                 </div>
                 <div className="text-sm text-gray-300">Años de Experiencia</div>
               </div>

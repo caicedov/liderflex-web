@@ -1,15 +1,16 @@
-import { NextRequest, NextResponse } from "next/server";
+import  { type NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { generateQuotePDF } from "@/lib/pdf/quote";
 import type { QuotePayload } from "@/lib/pdf/types";
 
 export async function GET(
-  req: NextRequest,
-  { params }: { params: { id: string } }
+  _req: NextRequest,
+  context: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await context.params
   try {
-    const quotationId = params.id;
+    const quotationId = id
 
     // Obtener cotización de Firestore
     const quotationRef = doc(db, "quotations", quotationId);
