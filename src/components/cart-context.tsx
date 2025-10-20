@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { createContext, useContext, useReducer, type ReactNode } from "react";
+import { createContext, useContext, useReducer, useEffect, type ReactNode } from "react";
 
 export interface CartItem {
   id: string;
@@ -18,7 +18,8 @@ type CartAction =
   | { type: "ADD_ITEM"; payload: Omit<CartItem, "quantity"> }
   | { type: "REMOVE_ITEM"; payload: string }
   | { type: "UPDATE_QUANTITY"; payload: { id: string; quantity: number } }
-  | { type: "CLEAR_CART" };
+  | { type: "CLEAR_CART" }
+  | { type: "SET_CART"; payload: CartItem[] };
 
 const CartContext = createContext<{
   state: CartState;
@@ -63,6 +64,9 @@ function cartReducer(state: CartState, action: CartAction): CartState {
     case "CLEAR_CART":
       return { items: [] };
 
+    case "SET_CART":
+      return { items: action.payload };
+
     default:
       return state;
   }
@@ -70,6 +74,29 @@ function cartReducer(state: CartState, action: CartAction): CartState {
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(cartReducer, { items: [] });
+
+  // 💾 Cargar carrito desde localStorage cuando inicia
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("cart");
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) {
+          dispatch({ type: "SET_CART", payload: parsed });
+        }
+      }
+    } catch (err) {
+      console.error("Error al leer carrito guardado:", err);
+    }
+  }, []);
+
+  // 💿 Guardar carrito cada vez que cambia
+  useEffect(() => {
+    if (state.items.length >= 0) {
+      localStorage.setItem("cart", JSON.stringify(state.items));
+    }
+  }, [state.items]);
+
   return (
     <CartContext.Provider value={{ state, dispatch }}>
       {children}
