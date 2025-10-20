@@ -1,11 +1,8 @@
 "use client";
-import { useState } from "react";
+import { use, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
-  Star,
   Heart,
   Share2,
   Minus,
@@ -17,13 +14,15 @@ import { useCart } from "@/components/cart-context";
 import Image from "next/image";
 import { products, getProductById } from "@/components/product-data";
 
-function ProductDetailContent({ params }: { params: { id: string } }) {
-  const [selectedImage, setSelectedImage] = useState(0);
-  const [quantity, setQuantity] = useState(1);
-  const [selectedSize, setSelectedSize] = useState("");
+function ProductDetailContent({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params)
+
+  const [selectedImage, setSelectedImage] = useState<number>(0);
+  const [quantity, setQuantity] = useState<number>(1);
+  const [selectedSize, setSelectedSize] = useState<string>("");
   const { dispatch } = useCart();
 
-  const product = getProductById(params.id) || products[0];
+  const product = getProductById(id) || products[0];
 
   const addToCart = () => {
     if (product.availableSizes && !selectedSize) {
@@ -275,7 +274,7 @@ function ProductDetailContent({ params }: { params: { id: string } }) {
 export default function ProductDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
   return <ProductDetailContent params={params} />;
 }
