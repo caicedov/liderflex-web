@@ -109,12 +109,12 @@ export default function Categories() {
 // Íconos/imagenes por categoría (opcional). Ajusta rutas según tus assets reales.
 function getCategoryIcon(category: string): string {
   const map: Record<string, string> = {
-    "Mangueras Hidráulicas": "/icons/cat-hidraulicas.svg",
-    "Mangueras Industriales": "/icons/cat-industriales.svg",
-    "Mangueras Químicas": "/icons/cat-quimicas.svg",
-    "Mangueras PVC": "/icons/cat-pvc.svg",
-    "Mangueras Especiales": "/icons/cat-especiales.svg",
-    "Accesorios": "/icons/cat-accesorios.svg",
+    "Mangueras Hidráulicas": "/mangueras/mh-4sh.png",
+    "Mangueras Industriales": "/mangueras/mh-sae100r7.png",
+    "Mangueras Químicas": "/mangueras/m-acido-solv.png",
+    "Mangueras PVC": "/mangueras/m-pvc-anill.png",
+    "Mangueras Especiales": "/mangueras/m-acido-solv.png",
+    "Accesorios": "/conexiones/m-orfs-for.png",
   };
   return map[category] || "/placeholder.svg";
 }

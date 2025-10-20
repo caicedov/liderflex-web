@@ -126,7 +126,7 @@ export default function Header() {
                         <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-obsidian-900"></div>
                       </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end" className="w-56">
+                    <DropdownMenuContent align="end" className="w-56 bg-white text-black shadow-lg border border-gray-200">
                       <div className="px-3 py-2 border-b">
                         <p className="font-medium">{profile?.full_name || 'Usuario'}</p>
                         <p className="text-sm text-gray-500">{profile?.email}</p>
