@@ -7,7 +7,6 @@ export default function ProductList() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
 
-  // Filter and search logic
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
       const matchesCategory = category ? product.category === category : true;
@@ -41,10 +40,12 @@ export default function ProductList() {
           ))}
         </select>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
+
         {filteredProducts.length === 0 && (
           <div className="col-span-full text-center text-gray-500 py-12">
             No se encontraron productos.

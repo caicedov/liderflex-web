@@ -1,5 +1,3 @@
-// product-data.ts - Catálogo completo de productos Liderflex
-
 export interface ProductSpecification {
   [key: string]: string | number;
 }
@@ -7,33 +5,19 @@ export interface ProductSpecification {
 export interface ProductSize {
   code: string;
   size: string;
-  stock: number;
 }
 
 export interface Product {
   id: string;
   name: string;
   category: string;
-  price: number;
-  originalPrice?: number;
-  rating: number;
-  reviews?: number;
-  discount?: number;
-  inStock?: boolean;
-  stockQuantity?: number;
-  images?: string[];
   image?: string;
+  images?: string[];
   description: string;
   specifications: ProductSpecification;
   features: string[];
   applications: string[];
   availableSizes?: ProductSize[];
-  countdown?: {
-    days: number;
-    hours: number;
-    minutes: number;
-    seconds: number;
-  };
 }
 
 // ============================================
@@ -43,13 +27,6 @@ export const manguera_r1: Product = {
   id: "r1",
   name: "Manguera Hidráulica SAE 100 R1",
   category: "Mangueras Hidráulicas",
-  price: 500000,
-  originalPrice: 180000,
-  rating: 5,
-  reviews: 24,
-  discount: 3,
-  inStock: true,
-  stockQuantity: 150,
   images: [
     "/sae100r1.png?height=400&width=400",
     "/placeholder.svg?height=400&width=400",
@@ -79,16 +56,16 @@ export const manguera_r1: Product = {
     "Servicios hidráulicos a mediana presión"
   ],
   availableSizes: [
-    { code: "MANR104", size: "1/4\"", stock: 32 },
-    { code: "MANR105", size: "5/16\"", stock: 28 },
-    { code: "MANR106", size: "3/8\"", stock: 45 },
-    { code: "MANR108", size: "1/2\"", stock: 38 },
-    { code: "MANR110", size: "5/8\"", stock: 22 },
-    { code: "MANR112", size: "3/4\"", stock: 18 },
-    { code: "MANR116", size: "1\"", stock: 15 },
-    { code: "MANR120", size: "1 1/4\"", stock: 12 },
-    { code: "MANR124", size: "1 1/2\"", stock: 10 },
-    { code: "MANR132", size: "2\"", stock: 8 }
+    { code: "MANR104", size: "1/4\"" },
+    { code: "MANR105", size: "5/16\"" },
+    { code: "MANR106", size: "3/8\"" },
+    { code: "MANR108", size: "1/2\"" },
+    { code: "MANR110", size: "5/8\"" },
+    { code: "MANR112", size: "3/4\"" },
+    { code: "MANR116", size: "1\"" },
+    { code: "MANR120", size: "1 1/4\"" },
+    { code: "MANR124", size: "1 1/2\"" },
+    { code: "MANR132", size: "2\"" }
   ]
 };
 
@@ -99,13 +76,6 @@ export const manguera_r2: Product = {
   id: "r2",
   name: "Manguera Hidráulica SAE 100 R2",
   category: "Mangueras Hidráulicas",
-  price: 220000,
-  originalPrice: 230000,
-  rating: 5,
-  reviews: 32,
-  discount: 4,
-  inStock: true,
-  stockQuantity: 120,
   images: [
     "/placeholder.svg?height=400&width=400",
     "/placeholder.svg?height=400&width=400",
@@ -135,16 +105,16 @@ export const manguera_r2: Product = {
     "Servicios hidráulicos a presiones altas"
   ],
   availableSizes: [
-    { code: "MANR204", size: "1/4\"", stock: 30 },
-    { code: "MANR205", size: "5/16\"", stock: 26 },
-    { code: "MANR206", size: "3/8\"", stock: 40 },
-    { code: "MANR208", size: "1/2\"", stock: 35 },
-    { code: "MANR210", size: "5/8\"", stock: 20 },
-    { code: "MANR212", size: "3/4\"", stock: 16 },
-    { code: "MANR216", size: "1\"", stock: 14 },
-    { code: "MANR220", size: "1 1/4\"", stock: 10 },
-    { code: "MANR224", size: "1 1/2\"", stock: 8 },
-    { code: "MANR232", size: "2\"", stock: 6 }
+    { code: "MANR204", size: "1/4\"" },
+    { code: "MANR205", size: "5/16\"" },
+    { code: "MANR206", size: "3/8\"" },
+    { code: "MANR208", size: "1/2\"" },
+    { code: "MANR210", size: "5/8\"" },
+    { code: "MANR212", size: "3/4\"" },
+    { code: "MANR216", size: "1\"" },
+    { code: "MANR220", size: "1 1/4\"" },
+    { code: "MANR224", size: "1 1/2\"" },
+    { code: "MANR232", size: "2\"" }
   ]
 };
 
@@ -155,11 +125,6 @@ export const manguera_r4: Product = {
   id: "r4",
   name: "Manguera Hidráulica SAE 100 R4 - Succión/Descarga",
   category: "Mangueras Hidráulicas",
-  price: 185000,
-  rating: 4,
-  reviews: 18,
-  inStock: true,
-  stockQuantity: 45,
   images: [
     "/placeholder.svg?height=400&width=400",
   ],
@@ -188,9 +153,9 @@ export const manguera_r4: Product = {
     "Agua"
   ],
   availableSizes: [
-    { code: "MC20", size: "1 1/4\"", stock: 20 },
-    { code: "MC24", size: "1 1/2\"", stock: 15 },
-    { code: "MC32", size: "2\"", stock: 10 }
+    { code: "MC20", size: "1 1/4\"" },
+    { code: "MC24", size: "1 1/2\"" },
+    { code: "MC32", size: "2\"" }
   ]
 };
 
@@ -201,11 +166,6 @@ export const manguera_r6: Product = {
   id: "r6",
   name: "Manguera Hidráulica SAE 100 R6 - Multipropósito",
   category: "Mangueras Hidráulicas",
-  price: 95000,
-  rating: 4,
-  reviews: 28,
-  inStock: true,
-  stockQuantity: 200,
   images: [
     "/placeholder.svg?height=400&width=400",
   ],
@@ -234,20 +194,20 @@ export const manguera_r6: Product = {
     "Retorno de sistemas hidráulicos a baja presión"
   ],
   availableSizes: [
-    { code: "MUL3/16", size: "3/16\"", stock: 50 },
-    { code: "MUL1/4", size: "1/4\"", stock: 45 },
-    { code: "MUL5/16", size: "5/16\"", stock: 40 },
-    { code: "MUL3/8", size: "3/8\"", stock: 38 },
-    { code: "MUL1/2", size: "1/2\"", stock: 35 },
-    { code: "MUL5/8", size: "5/8\"", stock: 30 },
-    { code: "MUL3/4", size: "3/4\"", stock: 28 },
-    { code: "MUL1", size: "1\"", stock: 25 },
-    { code: "MUL11/4", size: "1 1/4\"", stock: 20 },
-    { code: "MUL11/2", size: "1 1/2\"", stock: 18 },
-    { code: "MUL2", size: "2\"", stock: 15 },
-    { code: "MUL21/2", size: "2 1/2\"", stock: 12 },
-    { code: "MUL3", size: "3\"", stock: 10 },
-    { code: "MUL4", size: "4\"", stock: 8 }
+    { code: "MUL3/16", size: "3/16\"" },
+    { code: "MUL1/4", size: "1/4\"" },
+    { code: "MUL5/16", size: "5/16\"" },
+    { code: "MUL3/8", size: "3/8\"" },
+    { code: "MUL1/2", size: "1/2\"" },
+    { code: "MUL5/8", size: "5/8\"" },
+    { code: "MUL3/4", size: "3/4\"" },
+    { code: "MUL1", size: "1\"" },
+    { code: "MUL11/4", size: "1 1/4\"" },
+    { code: "MUL11/2", size: "1 1/2\"" },
+    { code: "MUL2", size: "2\"" },
+    { code: "MUL21/2", size: "2 1/2\"" },
+    { code: "MUL3", size: "3\"" },
+    { code: "MUL4", size: "4\"" }
   ]
 };
 
@@ -258,11 +218,6 @@ export const manguera_r12: Product = {
   id: "r12",
   name: "Manguera Hidráulica SAE 100 R12",
   category: "Mangueras Hidráulicas",
-  price: 280000,
-  rating: 5,
-  reviews: 15,
-  inStock: true,
-  stockQuantity: 60,
   images: [
     "/placeholder.svg?height=400&width=400",
   ],
@@ -291,9 +246,9 @@ export const manguera_r12: Product = {
     "Servicios hidráulicos a presiones altas"
   ],
   availableSizes: [
-    { code: "MANR1206", size: "3/8\"", stock: 25 },
-    { code: "MANR1208", size: "1/2\"", stock: 20 },
-    { code: "MANR1210", size: "5/8\"", stock: 15 }
+    { code: "MANR1206", size: "3/8\"" },
+    { code: "MANR1208", size: "1/2\"" },
+    { code: "MANR1210", size: "5/8\"" }
   ]
 };
 
@@ -304,11 +259,6 @@ export const manguera_4sh: Product = {
   id: "4sh",
   name: "Manguera Hidráulica 4SH",
   category: "Mangueras Hidráulicas",
-  price: 320000,
-  rating: 5,
-  reviews: 12,
-  inStock: true,
-  stockQuantity: 40,
   images: [
     "/placeholder.svg?height=400&width=400",
   ],
@@ -337,10 +287,10 @@ export const manguera_4sh: Product = {
     "Servicios hidráulicos a presiones altas"
   ],
   availableSizes: [
-    { code: "MAN4SH12", size: "3/4\"", stock: 15 },
-    { code: "MAN4SH16", size: "1\"", stock: 12 },
-    { code: "MAN4SH20", size: "1 1/4\"", stock: 8 },
-    { code: "MAN4SH24", size: "1 1/2\"", stock: 5 }
+    { code: "MAN4SH12", size: "3/4\"" },
+    { code: "MAN4SH16", size: "1\"" },
+    { code: "MAN4SH20", size: "1 1/4\"" },
+    { code: "MAN4SH24", size: "1 1/2\"" }
   ]
 };
 
@@ -351,11 +301,6 @@ export const manguera_r7: Product = {
   id: "r7",
   name: "Manguera Hidráulica SAE 100 R7 - Termoplástica",
   category: "Mangueras Hidráulicas",
-  price: 145000,
-  rating: 4,
-  reviews: 22,
-  inStock: true,
-  stockQuantity: 80,
   images: [
     "/placeholder.svg?height=400&width=400",
   ],
@@ -384,10 +329,10 @@ export const manguera_r7: Product = {
     "Trabajo en poleas"
   ],
   availableSizes: [
-    { code: "MANR704S", size: "1/4\" Simple", stock: 30 },
-    { code: "MANR706S", size: "3/8\" Simple", stock: 25 },
-    { code: "MANR704D", size: "1/4\" Doble", stock: 15 },
-    { code: "MANR706D", size: "3/8\" Doble", stock: 10 }
+    { code: "MANR704S", size: "1/4\" Simple" },
+    { code: "MANR706S", size: "3/8\" Simple" },
+    { code: "MANR704D", size: "1/4\" Doble" },
+    { code: "MANR706D", size: "3/8\" Doble" }
   ]
 };
 
@@ -398,11 +343,6 @@ export const manguera_teflon: Product = {
   id: "teflon",
   name: "Manguera Teflón",
   category: "Mangueras Especiales",
-  price: 450000,
-  rating: 5,
-  reviews: 8,
-  inStock: true,
-  stockQuantity: 30,
   images: [
     "/placeholder.svg?height=400&width=400",
   ],
@@ -431,12 +371,12 @@ export const manguera_teflon: Product = {
     "Productos químicos"
   ],
   availableSizes: [
-    { code: "MT04", size: "1/4\"", stock: 8 },
-    { code: "MT06", size: "3/8\"", stock: 7 },
-    { code: "MT08", size: "1/2\"", stock: 6 },
-    { code: "MT10", size: "5/8\"", stock: 4 },
-    { code: "MT12", size: "3/4\"", stock: 3 },
-    { code: "MT16", size: "1\"", stock: 2 }
+    { code: "MT04", size: "1/4\"" },
+    { code: "MT06", size: "3/8\"" },
+    { code: "MT08", size: "1/2\"" },
+    { code: "MT10", size: "5/8\"" },
+    { code: "MT12", size: "3/4\"" },
+    { code: "MT16", size: "1\"" }
   ]
 };
 
@@ -447,11 +387,6 @@ export const manguera_vapor: Product = {
   id: "vapor",
   name: "Manguera Vapor Roja",
   category: "Mangueras Especiales",
-  price: 165000,
-  rating: 4,
-  reviews: 14,
-  inStock: true,
-  stockQuantity: 50,
   images: [
     "/placeholder.svg?height=400&width=400",
   ],
@@ -479,11 +414,11 @@ export const manguera_vapor: Product = {
     "Procesos de limpieza con vapor"
   ],
   availableSizes: [
-    { code: "MVA08", size: "1/2\"", stock: 15 },
-    { code: "MVA12", size: "3/4\"", stock: 12 },
-    { code: "MVA16", size: "1\"", stock: 10 },
-    { code: "MVA24", size: "1 1/2\"", stock: 8 },
-    { code: "MVA32", size: "2\"", stock: 5 }
+    { code: "MVA08", size: "1/2\"" },
+    { code: "MVA12", size: "3/4\"" },
+    { code: "MVA16", size: "1\"" },
+    { code: "MVA24", size: "1 1/2\"" },
+    { code: "MVA32", size: "2\"" }
   ]
 };
 
@@ -494,11 +429,6 @@ export const manguera_acidos: Product = {
   id: "acidos",
   name: "Manguera Ácidos y Solventes XLPE",
   category: "Mangueras Químicas",
-  price: 195000,
-  rating: 5,
-  reviews: 10,
-  inStock: true,
-  stockQuantity: 40,
   images: [
     "/placeholder.svg?height=400&width=400",
   ],
@@ -526,12 +456,12 @@ export const manguera_acidos: Product = {
     "Ácidos industriales"
   ],
   availableSizes: [
-    { code: "MXLPE12", size: "3/4\"", stock: 12 },
-    { code: "MXLPE16", size: "1\"", stock: 10 },
-    { code: "MXLPE24", size: "1 1/2\"", stock: 8 },
-    { code: "MXLPE32", size: "2\"", stock: 5 },
-    { code: "MXLPE48", size: "3\"", stock: 3 },
-    { code: "MXLPE64", size: "4\"", stock: 2 }
+    { code: "MXLPE12", size: "3/4\"" },
+    { code: "MXLPE16", size: "1\"" },
+    { code: "MXLPE24", size: "1 1/2\"" },
+    { code: "MXLPE32", size: "2\"" },
+    { code: "MXLPE48", size: "3\"" },
+    { code: "MXLPE64", size: "4\"" }
   ]
 };
 
@@ -542,11 +472,6 @@ export const manguera_pvc: Product = {
   id: "pvc",
   name: "Manguera PVC Anillada Amarilla",
   category: "Mangueras PVC",
-  price: 45000,
-  rating: 4,
-  reviews: 35,
-  inStock: true,
-  stockQuantity: 250,
   images: [
     "/placeholder.svg?height=400&width=400",
   ],
@@ -573,14 +498,14 @@ export const manguera_pvc: Product = {
     "Construcción"
   ],
   availableSizes: [
-    { code: "MANL12", size: "3/4\"", stock: 50 },
-    { code: "MANL16", size: "1\"", stock: 45 },
-    { code: "MANL20", size: "1 1/4\"", stock: 40 },
-    { code: "MANL24", size: "1 1/2\"", stock: 35 },
-    { code: "MANL32", size: "2\"", stock: 30 },
-    { code: "MANL40", size: "2 1/2\"", stock: 20 },
-    { code: "MANL48", size: "3\"", stock: 15 },
-    { code: "MANL64", size: "4\"", stock: 15 }
+    { code: "MANL12", size: "3/4\"" },
+    { code: "MANL16", size: "1\"" },
+    { code: "MANL20", size: "1 1/4\"" },
+    { code: "MANL24", size: "1 1/2\"" },
+    { code: "MANL32", size: "2\"" },
+    { code: "MANL40", size: "2 1/2\"" },
+    { code: "MANL48", size: "3\"" },
+    { code: "MANL64", size: "4\"" }
   ]
 };
 
@@ -591,11 +516,6 @@ export const manguera_poliuretano: Product = {
   id: "poliuretano",
   name: "Manguera Espiralada de Cobre Poliuretano",
   category: "Mangueras Industriales",
-  price: 125000,
-  rating: 5,
-  reviews: 18,
-  inStock: true,
-  stockQuantity: 70,
   images: [
     "/placeholder.svg?height=400&width=400",
   ],
@@ -623,16 +543,16 @@ export const manguera_poliuretano: Product = {
     "Sistemas de extracción"
   ],
   availableSizes: [
-    { code: "MPU40", size: "1 1/2\"", stock: 15 },
-    { code: "MPU51", size: "2\"", stock: 12 },
-    { code: "MPU60", size: "2 1/2\"", stock: 10 },
-    { code: "MPU76", size: "3\"", stock: 8 },
-    { code: "MPU102", size: "4\"", stock: 6 },
-    { code: "MPU127", size: "5\"", stock: 5 },
-    { code: "MPU152", size: "6\"", stock: 5 },
-    { code: "MPU203", size: "8\"", stock: 4 },
-    { code: "MPU254", size: "10\"", stock: 3 },
-    { code: "MPU305", size: "12\"", stock: 2 }
+    { code: "MPU40", size: "1 1/2\"" },
+    { code: "MPU51", size: "2\"" },
+    { code: "MPU60", size: "2 1/2\"" },
+    { code: "MPU76", size: "3\"" },
+    { code: "MPU102", size: "4\"" },
+    { code: "MPU127", size: "5\"" },
+    { code: "MPU152", size: "6\"" },
+    { code: "MPU203", size: "8\"" },
+    { code: "MPU254", size: "10\"" },
+    { code: "MPU305", size: "12\"" }
   ]
 };
 
@@ -643,11 +563,6 @@ export const proteccion_espiral: Product = {
   id: "proteccion",
   name: "Protección Espiral Negro",
   category: "Accesorios",
-  price: 15000,
-  rating: 4,
-  reviews: 42,
-  inStock: true,
-  stockQuantity: 300,
   images: [
     "/placeholder.svg?height=400&width=400",
   ],
@@ -675,11 +590,11 @@ export const proteccion_espiral: Product = {
     "Equipos industriales"
   ],
   availableSizes: [
-    { code: "EN12MM", size: "12mm", stock: 80 },
-    { code: "EN28MM", size: "28mm", stock: 70 },
-    { code: "EN45MM", size: "45mm", stock: 60 },
-    { code: "EN67MM", size: "67mm", stock: 50 },
-    { code: "EN99MM", size: "99mm", stock: 40 }
+    { code: "EN12MM", size: "12mm" },
+    { code: "EN28MM", size: "28mm" },
+    { code: "EN45MM", size: "45mm" },
+    { code: "EN67MM", size: "67mm" },
+    { code: "EN99MM", size: "99mm" }
   ]
 };
 
@@ -719,11 +634,6 @@ export const getProductsByCategory = (category: string): Product[] => {
 // Obtener todas las categorías únicas
 export const getCategories = (): string[] => {
   return Array.from(new Set(products.map(product => product.category)));
-};
-
-// Obtener productos en oferta
-export const getProductsOnSale = (): Product[] => {
-  return products.filter(product => product.discount && product.discount > 0);
 };
 
 // Buscar productos por nombre o descripción
