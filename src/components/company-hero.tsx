@@ -6,19 +6,7 @@ import Link from "next/link";
 
 export default function CompanyHero() {
   return (
-    <section className="relative min-h-[600px] bg-gradient-to-r from-obsidian-900 via-obsidian-800 to-obsidian-700 overflow-hidden">
-      <div className="absolute inset-0">
-        <video
-          src="/videos/video-1.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          className="w-full h-full object-cover opacity-20"
-          style={{ pointerEvents: "none" }}
-        />
-      </div>
+    <section className="relative min-h-[600px] overflow-hidden">
 
       <div className="relative container mx-auto px-4 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -27,7 +15,7 @@ export default function CompanyHero() {
               🏆 X+ Años de Excelencia
             </div>
 
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight">
               Liderflex
               <span className="text-yellow-400"> Hidráulica</span>
             </h1>
