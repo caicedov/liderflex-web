@@ -69,12 +69,12 @@ export default function Categories() {
             <Link key={category.name} href={category.href}>
               <Card className="text-center hover:shadow-lg transition-shadow cursor-pointer group h-full w-32 md:w-36">
                 <CardContent className="p-6 h-full flex flex-col items-center justify-center">
-                  <div className="w-20 h-20 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-yellow-100 transition-colors">
+                  <div className="w-20 h-20 mx-auto mb-4  rounded-full flex items-center justify-center group-hover:bg-yellow-100 transition-colors">
                     <Image
                       src={category.icon || "/placeholder.svg"}
                       alt={category.name}
-                      width={40}
-                      height={40}
+                      width={100}
+                      height={80}
                       className="opacity-70"
                     />
                   </div>
@@ -113,11 +113,12 @@ export default function Categories() {
 function getCategoryIcon(category: string): string {
   const map: Record<string, string> = {
     "Mangueras Hidráulicas": "/mangueras/mh-4sh.png",
-    "Mangueras Industriales": "/mangueras/mh-sae100r7.png",
+    "Mangueras Industriales": "/mangueras/m-espiralada.png",
     "Mangueras Químicas": "/mangueras/m-acido-solv.png",
     "Mangueras PVC": "/mangueras/m-pvc-anill.png",
     "Mangueras Especiales": "/mangueras/m-acido-solv.png",
-    Accesorios: "/conexiones/m-orfs-for.png",
+    "Accesorios": "/mangueras/proteccion-espiral.png",
+    "Conexiones Hidráulicas": "/conexiones/m-orfs-for.png"
   };
   return map[category] || "/placeholder.svg";
 }

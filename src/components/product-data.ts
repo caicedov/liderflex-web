@@ -971,7 +971,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conexión métrica hembra giratoria serie pesada con asiento 24°, norma DIN.",
-    images: ["/conexiones/h-pesado-hml.png?height=400&width=400"],
+    images: ["/conexiones/h-pesado-hmh.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 1 1/2"',
       "Hilo Métrico": "14 a 52 mm",
@@ -993,7 +993,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conexión métrica serie pesada 45° con asiento 24°, diseñada para altas presiones.",
-    images: ["/conexiones/h-pesado-hml-45.png?height=400&width=400"],
+    images: ["/conexiones/h-pesado-hmh-45.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 1 1/2"',
       "Hilo Métrico": "14 a 52 mm",
@@ -1012,7 +1012,7 @@ export const conexiones_hidraulicas: Product[] = [
     category: "Conexiones Hidráulicas",
     description:
       "Conexión métrica giratoria pesada 90° con norma DIN asiento 24°.",
-    images: ["/conexiones/h-pesado-hml-90.png?height=400&width=400"],
+    images: ["/conexiones/h-pesado-hmh-90.png?height=400&width=400"],
     specifications: {
       Medidas: 'Manguera 1/4" a 1 1/2"',
       "Hilo Métrico": "14 a 52 mm",
