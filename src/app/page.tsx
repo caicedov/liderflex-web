@@ -1,7 +1,16 @@
-"use client";
 import CompanyHero from "@/components/company-hero";
 import ServicesSection from "@/components/services-section";
 import FeaturedProducts from "@/components/featured-products";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Liderflex Hidráulica - Soluciones Hidráulicas Premium",
+  description:
+    "Tu socio de confianza para soluciones premium de mangueras hidráulicas e industriales. Entregamos calidad, confiabilidad e innovación para potenciar tus operaciones.",
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
 
 export default function HomePage() {
   return (

@@ -1,3 +1,4 @@
+'use client'
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -7,6 +8,7 @@ import WhatsAppChatModal from "@/components/whatsapp-chat-modal";
 import { CartProvider } from "@/components/cart-context";
 import { AuthProvider } from "@/contexts/auth-context";
 import Footer from "@/components/footer";
+import { usePathname } from "next/navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,20 +20,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Liderflex Hidráulica - Soluciones Hidráulicas Premium",
-  description:
-    "Tu socio de confianza para soluciones premium de mangueras hidráulicas e industriales. Entregamos calidad, confiabilidad e innovación para potenciar tus operaciones.",
-  icons: {
-    icon: "/favicon.ico",
-  },
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
+  const isHome = pathname === '/'
   return (
     <html lang="es">
       <body
@@ -40,10 +35,12 @@ export default function RootLayout({
         <AuthProvider>
           <CartProvider>
             {/* Sticky Header (Topbar + Nav) for all pages */}
-            <div className="sticky top-0 z-50 shadow-lg">
+            <div className="fixed top-0 left-0 w-full z-50">
               <Header />
             </div>
-            {children}
+            <div className={isHome ? "" : "pt-20 md:pt-20"}>
+              {children}
+            </div>
             {/* WhatsApp Chat Modal floating button */}
             <WhatsAppChatModal />
             <Footer />

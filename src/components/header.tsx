@@ -31,6 +31,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [category, setCategory] = useState<string>("all");
 
+  const isHome = pathname === '/'
   const inShop = useMemo(
     () =>
       pathname.startsWith("/shop") ||
@@ -58,7 +59,7 @@ export default function Header() {
     <>
       {/* ----------- HEADER PARA TIENDA ----------- */}
       {inShop && (
-        <header className="bg-obsidian-900 text-white backdrop-blur-lg bg-opacity-90">
+        <header className="bg-obsidian-900 text-white bg-opacity-90">
           <div className="container mx-auto px-4 py-3">
             <div className="flex items-center justify-between gap-4">
               <Link href="/shop" className="shrink-0" aria-label="Ir a Tienda">
@@ -192,13 +193,14 @@ export default function Header() {
       {/* ----------- NAVBAR PRINCIPAL (HOME, ABOUT, ETC) ----------- */}
       {!inShop && (
         <nav
-          className={`fixed top-0 left-0 w-full z-50 backdrop-blur-md transition-all duration-500 ease-in-out border-b border-yellow-300/30
-            ${
-              isScrolled
-                ? "bg-yellow-400/95 shadow-lg"
-                : ""
-            }
-          `}
+          className={[
+            "fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out border-b border-yellow-300/30",
+            isHome
+              // Solo en HOME: blur + fondo translúcido (no sólido)
+              ? "backdrop-blur-md bg-black/20"
+              // En el resto: SIN blur y con fondo sólido
+              : "bg-yellow-400 shadow-lg",
+          ].join(" ")}
           aria-label="Navegación principal"
         >
           <div className="container mx-auto px-4">

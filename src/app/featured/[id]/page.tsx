@@ -88,8 +88,8 @@ export default function FeaturedDetailPage({ params }: { params: { id: string } 
           <Image
             src="/logo-color.png"
             alt="Logo de la empresa"
-            width={1200}
-            height={1200}
+            width={1000}
+            height={1000}
             className="opacity-20 object-contain select-none"
             priority={false}
           />
