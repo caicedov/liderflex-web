@@ -48,7 +48,7 @@ export default function Categories() {
 
     // Ordenar por nombre o por cantidad (elige tu preferencia)
     return Array.from(map.values()).sort((a, b) =>
-      a.name.localeCompare(b.name, "es")
+      a.name.localeCompare(b.name, "es"),
     );
   }, []);
 
@@ -56,16 +56,18 @@ export default function Categories() {
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Busca por Categorías Destacadas</h2>
+          <h2 className="text-3xl font-bold mb-4">
+            Busca por Categorías Destacadas
+          </h2>
           <p className="text-gray-600">
             Explora nuestra amplia gama de mangueras hidráulicas e industriales
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 mb-16">
+        <div className="flex flex-wrap justify-center gap-6 mb-16">
           {categories.map((category) => (
             <Link key={category.name} href={category.href}>
-              <Card className="text-center hover:shadow-lg transition-shadow cursor-pointer group h-full">
+              <Card className="text-center hover:shadow-lg transition-shadow cursor-pointer group h-full w-32 md:w-36">
                 <CardContent className="p-6 h-full flex flex-col items-center justify-center">
                   <div className="w-20 h-20 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-yellow-100 transition-colors">
                     <Image
@@ -80,7 +82,8 @@ export default function Categories() {
                     {category.name}
                   </h3>
                   <p className="text-xs text-gray-500">
-                    {category.count} {category.count === 1 ? "Producto" : "Productos"}
+                    {category.count}{" "}
+                    {category.count === 1 ? "Producto" : "Productos"}
                   </p>
                 </CardContent>
               </Card>
@@ -88,7 +91,7 @@ export default function Categories() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 bg-white p-8 rounded-lg shadow-sm">
+        <div className="flex flex-wrap justify-between items-center gap-8 bg-white p-8 rounded-lg shadow-sm">
           {features.map((feature) => (
             <div key={feature.title} className="flex items-center gap-4">
               <div className="bg-yellow-100 p-3 rounded-full">
@@ -114,7 +117,7 @@ function getCategoryIcon(category: string): string {
     "Mangueras Químicas": "/mangueras/m-acido-solv.png",
     "Mangueras PVC": "/mangueras/m-pvc-anill.png",
     "Mangueras Especiales": "/mangueras/m-acido-solv.png",
-    "Accesorios": "/conexiones/m-orfs-for.png",
+    Accesorios: "/conexiones/m-orfs-for.png",
   };
   return map[category] || "/placeholder.svg";
 }

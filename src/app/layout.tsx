@@ -35,7 +35,7 @@ export default function RootLayout({
         <AuthProvider>
           <CartProvider>
             {/* Sticky Header (Topbar + Nav) for all pages */}
-            <div className="fixed top-0 left-0 w-full z-50">
+            <div className="sticky top-0 left-0 w-full z-50">
               <Header />
             </div>
             <div className={isHome ? "" : "pt-20 md:pt-20"}>
