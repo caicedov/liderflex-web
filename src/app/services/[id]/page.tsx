@@ -46,12 +46,13 @@ export async function generateStaticParams() {
   return Object.keys(servicesById).map((id) => ({ id }));
 }
 
-export default function ServiceDetailPage({
+export default async function ServiceDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const service = servicesById[params.id];
+  const { id } = await params;
+  const service = servicesById[id];
   if (!service) return notFound();
 
   const { detail } = service;
