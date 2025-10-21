@@ -18,7 +18,7 @@ export default function ContactPage() {
     subject: "",
     message: "",
   });
-  const [modalOpen, setModalOpen] = useState<boolean>(false)
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [showWhatsAppMessage, setShowWhatsAppMessage] = useState(false);
 
   const handleInputChange = (
@@ -85,9 +85,7 @@ export default function ContactPage() {
                   <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <MapPin className="w-8 h-8 text-yellow-600" />
                   </div>
-                  <h3 className="text-lg font-bold mb-2">
-                    Sucursal Principal
-                  </h3>
+                  <h3 className="text-lg font-bold mb-2">Sucursal Principal</h3>
                   <p className="text-gray-600 text-sm">
                     Maullín 5634
                     <br />
@@ -290,14 +288,25 @@ export default function ContactPage() {
               </div>
 
               {/* Map and Additional Info */}
-              <div>
+              <div className="pb-4">
                 <h2 className="text-3xl font-bold mb-6">
                   Visita Nuestras Instalaciones
                 </h2>
 
-                {/* Map Placeholder */}
-                <div className="bg-gray-200 h-64 rounded-lg mb-6 flex items-center justify-center">
-                  <p className="text-gray-500">Mapa Interactivo Próximamente</p>
+                {/* Ubicación */}
+                <div className="container mx-auto my-3 max-w-4xl animate-fade-in">
+                  <div className="aspect-video rounded-xl overflow-hidden shadow-lg border border-accent/20">
+                    <iframe
+                      src="https://www.google.com/maps?output=embed&hl=es&q=Maullin%205634%2C%20Antofagasta%2C%20Chile%20near%20Av.%20Antonio%20Rendic%205584%2C%20Antofagasta%2C%20Chile"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="Mapa: Maullín 5634 y Av. Antonio Rendic 5584, Antofagasta"
+                    />
+                  </div>
                 </div>
 
                 {/* Quick Contact Options */}
@@ -378,7 +387,11 @@ export default function ContactPage() {
           </div>
         )}
       </div>
-      <SuccessModal isOpen={modalOpen} onClose={() => setModalOpen(false)} message="¡Gracias por tu mensaje! Te contactaremos pronto." />
+      <SuccessModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        message="¡Gracias por tu mensaje! Te contactaremos pronto."
+      />
     </>
   );
 }
