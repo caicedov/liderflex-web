@@ -68,20 +68,20 @@ export default function CompanyHero() {
 
           <div className="relative">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-              <h3 className="text-2xl font-bold text-white mb-6">
+              <h3 className="text-4xl font-bold text-white mb-6">
                 ¿Por qué elegir Liderflex?
               </h3>
 
               <div className="space-y-6">
-                <div className="flex items-start gap-4">
+                <div className=" flex items-center gap-4">
                   <div className="bg-yellow-400 p-2 rounded-lg">
                     <Award className="w-6 h-6 text-black" />
                   </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-white mb-1">
+                  <div >
+                    <h4 className="text-2xl font-semibold text-white mb-1">
                       Calidad
                     </h4>
-                    <p className="text-gray-200 text-sm">
+                    <p className="text-gray-200 text-xl">
                       Productos seleccionados cuidadosamente
                     </p>
                   </div>
@@ -92,24 +92,24 @@ export default function CompanyHero() {
                     <Wrench className="w-6 h-6 text-black" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-white mb-1">
+                    <h4 className="text-2xl font-semibold text-white mb-1">
                       Confianza
                     </h4>
-                    <p className="text-gray-200 text-sm">
+                    <p className="text-gray-200 text-xl">
                       Servicio, asesoramiento y soluciones personalizadas
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4 ">
                   <div className="bg-yellow-400 p-2 rounded-lg">
                     <Users className="w-6 h-6 text-black" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-white mb-1">
+                    <h4 className="text-2xl font-semibold text-white mb-1">
                       Innovación
                     </h4>
-                    <p className="text-gray-200 text-sm">
+                    <p className="text-gray-200 text-xl">
                       Productos y servicios innovadores
                     </p>
                   </div>

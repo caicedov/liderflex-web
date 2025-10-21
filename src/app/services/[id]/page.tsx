@@ -101,8 +101,8 @@ export default function ServiceDetailPage({
           <Image
             src="/logo-color.png"
             alt="Logo de la empresa"
-            width={400}
-            height={400}
+            width={1200}
+            height={1200}
             className="opacity-20 object-contain select-none"
             priority={false}
           />
@@ -132,7 +132,7 @@ export default function ServiceDetailPage({
               <p className="mt-8 text-neutral-700 leading-relaxed text-base sm:text-lg">
                 {highlightDescription(
                   detail.description,
-                  detail.highlightWords
+                  detail.highlightWords,
                 )}
               </p>
             </div>
@@ -148,10 +148,12 @@ export default function ServiceDetailPage({
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const service = servicesById[params.id];
+  const { id } = await params;
+  const service = servicesById[id];
   if (!service) return {};
+
   const { detail } = service;
   return {
     title: `${detail.titleTop} | Servicios`,

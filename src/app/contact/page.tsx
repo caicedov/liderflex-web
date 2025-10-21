@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
 import { CartProvider } from "@/components/cart-context";
+import { SuccessModal } from "@/components/success-modal";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -17,6 +18,7 @@ export default function ContactPage() {
     subject: "",
     message: "",
   });
+  const [modalOpen, setModalOpen] = useState<boolean>(false)
   const [showWhatsAppMessage, setShowWhatsAppMessage] = useState(false);
 
   const handleInputChange = (
@@ -31,7 +33,7 @@ export default function ContactPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission
-    alert("¡Gracias por tu mensaje! Te contactaremos pronto.");
+    setModalOpen(true);
     setFormData({
       name: "",
       email: "",
@@ -55,7 +57,7 @@ export default function ContactPage() {
   };
 
   return (
-    <CartProvider>
+    <>
       <div className="min-h-screen bg-white">
         {/* Hero Section */}
         <section className="bg-gradient-to-r from-obsidian-900 to-obsidian-700 text-white py-16">
@@ -376,6 +378,7 @@ export default function ContactPage() {
           </div>
         )}
       </div>
-    </CartProvider>
+      <SuccessModal isOpen={modalOpen} onClose={() => setModalOpen(false)} message="¡Gracias por tu mensaje! Te contactaremos pronto." />
+    </>
   );
 }

@@ -7,27 +7,13 @@ const footerLinks = {
   products: [
     "Mangueras Hidráulicas",
     "Mangueras Industriales",
-    "Mangueras Neumáticas",
+    "Liíea Neumáticas",
     "Ensamblajes Personalizados",
     "Conexiones y Adaptadores",
     "Servicios de Reparación",
   ],
-  company: [
-    "Nosotros",
-    "Garantía de Calidad",
-    "Certificaciones",
-    "Soporte Técnico",
-    "Guía de Instalación",
-    "Garantía",
-  ],
-  account: [
-    "Mi Cuenta",
-    "Historial de Pedidos",
-    "Rastrear Pedido",
-    "Devoluciones",
-    "Tickets de Soporte",
-    "Pedidos al Por Mayor",
-  ],
+  company: ["Nosotros"],
+  account: ["Mi Cuenta", "Historial de Cotizaciones"],
 };
 
 const paymentMethods = [
@@ -158,40 +144,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
-      {/**
-       * 
-       * Recent Purchase Notification 
-       * 
-       * <div className="fixed bottom-4 left-4 bg-white rounded-lg shadow-lg p-4 max-w-sm z-50">
-        <div className="flex items-center gap-3">
-          <Image
-            src="/placeholder.svg?height=40&width=40"
-            alt="Producto"
-            width={40}
-            height={40}
-            className="rounded"
-          />
-          <div className="flex-1">
-            <p className="text-sm font-medium text-gray-900">
-              Alguien compró recientemente
-            </p>
-            <p className="text-xs text-gray-600">
-              Kit de Manguera Hidráulica Premium
-            </p>
-            <p className="text-xs text-gray-500">Hace 2 minutos ✓ Verificado</p>
-          </div>
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-gray-400 hover:text-gray-600"
-          >
-            ×
-          </Button>
-        </div>
-      </div>
-       * 
-       * */}
     </footer>
   );
 }

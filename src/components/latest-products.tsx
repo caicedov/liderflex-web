@@ -25,7 +25,6 @@ export default function LatestProducts() {
               <ProductCard
                 key={product.id}
                 product={product}
-                showCountdown={true}
               />
             ))}
         </div>

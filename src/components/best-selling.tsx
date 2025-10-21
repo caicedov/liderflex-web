@@ -56,40 +56,8 @@ export default function BestSelling() {
             <ProductCard
               key={product.id}
               product={product}
-              showCountdown={true}
             />
           ))}
-        </div>
-
-        {/* Promotional Banners */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="bg-gradient-to-r from-gray-800 to-gray-600 rounded-lg p-8 text-white relative overflow-hidden">
-            <div className="relative z-10">
-              <div className="bg-yellow-400 text-black px-3 py-1 rounded text-sm font-semibold mb-4 inline-block">
-                ¡APÚRATE! OFERTA ESPECIAL
-              </div>
-              <h3 className="text-3xl font-bold mb-4">
-                Servicio Premium de Corte de Mangueras Hidráulicas
-              </h3>
-              <Button className="bg-yellow-400 hover:bg-yellow-500 text-black">
-                COMPRAR AHORA
-              </Button>
-            </div>
-          </div>
-
-          <div className="bg-gradient-to-r from-teal-600 to-teal-700 rounded-lg p-8 text-white relative overflow-hidden">
-            <div className="relative z-10">
-              <div className="bg-yellow-400 text-black px-3 py-1 rounded text-sm font-semibold mb-4 inline-block">
-                ¡APÚRATE! OFERTA ESPECIAL
-              </div>
-              <h3 className="text-3xl font-bold mb-4">
-                Herramienta Pesada Manual Liderflex
-              </h3>
-              <Button className="bg-yellow-400 hover:bg-yellow-500 text-black">
-                COMPRAR AHORA
-              </Button>
-            </div>
-          </div>
         </div>
       </div>
     </section>

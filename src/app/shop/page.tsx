@@ -1,7 +1,6 @@
 "use client";
 import Categories from "@/components/categories";
 import BestSelling from "@/components/best-selling";
-import LatestProducts from "@/components/latest-products";
 
 export default function ShopPage() {
   return (
@@ -14,11 +13,6 @@ export default function ShopPage() {
         <div className="animate-fade-in-up delay-400 duration-1000">
           <BestSelling />
         </div>
-        {/**
-           * <div className="animate-fade-in-up delay-600 duration-1000">
-          <LatestProducts />
-        </div>
-           */}
       </div>
     </div>
   );
