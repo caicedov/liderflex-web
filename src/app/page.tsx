@@ -15,8 +15,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <div className="relative bg-white overflow-hidden">
-      <section className="relative h-screen w-full flex items-center justify-center">
-        {/* Video Background */}
+      <section className="relative w-full min-h-[70vh] md:min-h-screen flex items-center">
         <video
           autoPlay
           loop
@@ -26,11 +25,9 @@ export default function HomePage() {
           className="absolute inset-0 w-full h-full object-cover z-0"
           src="/videos/video-1.mp4"
         />
-        {/* Overlay de color para contraste y legibilidad */}
-        <div className="absolute inset-0 bg-black/40 z-10" />
+        <div className="absolute inset-0 bg-black/50 md:bg-black/40 z-10" />
 
-        {/* Contenido principal del hero */}
-        <div className="relative z-20 text-center text-white px-4">
+        <div className="relative z-20 w-full">
           <CompanyHero />
         </div>
       </section>
