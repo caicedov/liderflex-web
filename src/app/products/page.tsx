@@ -1,3 +1,6 @@
+"use client";
+
+import { Suspense } from "react";
 import ProductList from "@/components/product-list";
 
 export default function ProductsPage() {
@@ -7,9 +10,11 @@ export default function ProductsPage() {
         <h1 className="text-4xl font-bold mb-8 animate-fade-in-up duration-1000">
           Todos los Productos
         </h1>
-        <div className="animate-fade-in-up delay-200 duration-1000">
-          <ProductList />
-        </div>
+        <Suspense fallback={<div>Cargando productos...</div>}>
+          <div className="animate-fade-in-up delay-200 duration-1000">
+            <ProductList />
+          </div>
+        </Suspense>
       </div>
     </div>
   );
