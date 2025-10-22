@@ -40,7 +40,7 @@ export default function Categories() {
           name: cat,
           count: 0,
           icon: getCategoryIcon(cat),
-          href: `/shop?category=${encodeURIComponent(cat)}`,
+          href: `/products?category=${encodeURIComponent(cat)}`,
         });
       }
       map.get(cat)!.count += 1;
