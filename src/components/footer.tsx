@@ -5,15 +5,26 @@ import Image from "next/image";
 
 const footerLinks = {
   products: [
-    "Mangueras Hidráulicas",
-    "Mangueras Industriales",
-    "Liíea Neumáticas",
-    "Ensamblajes Personalizados",
-    "Conexiones y Adaptadores",
-    "Servicios de Reparación",
+    {
+      name: "Mangueras Hidráulicas",
+      url: "/products?category=Mangueras%20Hidr%C3%A1ulicas",
+    },
+    {
+      name: "Mangueras Industriales",
+      url: "/products?category=Mangueras%20Industriales",
+    },
+    { name: "Línea Neumáticas", url: "/featured/3" },
+    {
+      name: "Conexiones y Adaptadores",
+      url: "/featured/4",
+    },
+    { name: "Servicios de Reparación", url: "/services/mantenimiento" },
   ],
-  company: ["Nosotros"],
-  account: ["Mi Cuenta", "Historial de Cotizaciones"],
+  company: [{ name: "Nosotros", url: "/about" }],
+  account: [
+    { name: "Mi Cuenta", url: "/cuenta" },
+    { name: "Historial de Cotizaciones", url: "/cotizaciones" },
+  ],
 };
 
 const paymentMethods = [
@@ -65,12 +76,12 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-4">Productos</h3>
             <ul className="space-y-2">
               {footerLinks.products.map((link) => (
-                <li key={link}>
+                <li key={link.name}>
                   <a
-                    href={`/productos/${encodeURIComponent(link.toLowerCase().replace(/\s+/g, "-"))}`}
+                    href={link.url}
                     className="text-gray-300 hover:text-yellow-400 text-sm transition-colors"
                   >
-                    {link}
+                    {link.name}
                   </a>
                 </li>
               ))}
@@ -82,12 +93,12 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-4">Nuestra Empresa</h3>
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
-                <li key={link}>
+                <li key={link.name}>
                   <a
-                    href={`/empresa/${encodeURIComponent(link.toLowerCase().replace(/\s+/g, "-"))}`}
+                    href={link.url}
                     className="text-gray-300 hover:text-yellow-400 text-sm transition-colors"
                   >
-                    {link}
+                    {link.name}
                   </a>
                 </li>
               ))}
@@ -126,7 +137,7 @@ export default function Footer() {
         <div className="border-t border-gray-700 mt-12 pt-8">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-400">
-              © 2025 Liderflex Hidráulica - Soluciones Hidráulicas Premium
+              © 2025 Liderflex Hidráulica - Soluciones Hidráulicas
             </p>
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-400 mr-4">Aceptamos:</span>

@@ -104,12 +104,12 @@ export default function Header() {
                 </button>
 
                 <Link
-                  href="/shop"
+                  href="/"
                   className="shrink-0"
                   aria-label="Ir a Tienda"
                 >
                   <Image
-                    src="/logo-white.png"
+                    src="/logo-color.png"
                     alt="Liderflex Hidráulica"
                     className="drop-shadow-lg transition-transform hover:scale-105"
                     width={150}
